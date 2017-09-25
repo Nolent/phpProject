@@ -1,4 +1,4 @@
-﻿<!--  E.Porcq	e95.php 20/09/2010 -->
+<!--  E.Porcq	e95.php 20/09/2010 -->
 
 <!-- maison : http://localhost:8082/support_php/prof/e95.php -->
 
@@ -14,56 +14,56 @@ if ( !empty($_POST ))
 
 	$erreur = false;
 	if (!empty($_POST['nom']) && $_POST['nom'] != "nom ?")
-    $nom = $_POST['nom'];
+	$nom = $_POST['nom'];
 	else
 	{
 		echo "le nom est vide <br />";
 		$erreur = true;
 	}
 	if (!empty($_POST['prenom']) && $_POST['prenom'] != "")
-		$prenom = $_POST['prenom'] ;
+	$prenom = $_POST['prenom'] ;
 	else
 	{
 		echo "le prénom est vide <br />";
 		$erreur = true;
 	}
 	if (!empty($_POST['courriel']) && $_POST['courriel'] != "courriel ?")
-		$courriel = $_POST['courriel'] ;
+	$courriel = $_POST['courriel'] ;
 	else
 	{
 		echo "le courriel est vide <br />";
 		$erreur = true;
 	}
 	if (!empty($_POST['gouts']) && $_POST['gouts'] != "quoi d'autre ? ?")
-		$gouts = $_POST['gouts'] ;
+	$gouts = $_POST['gouts'] ;
 	else
 	{
 		echo "les autres gouts ne sont pas remplis <br />";
 		$erreur = true;
 	}
 	if (!empty($_POST['code']))
-		$code = $_POST['code'] ;
+	$code = $_POST['code'] ;
 	else
 	{
 		echo "le mot de passe est vide <br />";
 		$erreur = true;
 	}
 	if (isset($_POST['civilite']) )
-		$civ = $_POST['civilite'];
+	$civ = $_POST['civilite'];
 	else
 	{
 		echo "la civilité n'a pas été cochée <br />";
 		$erreur = true;
 	}
 	if (isset($_POST['pays']) )
-		$pays = $_POST['pays'];
+	$pays = $_POST['pays'];
 	else
 	{
 		echo "le pays n'a pas été sélectionné <br />";
 		$erreur = true;
 	}
 	if (isset($_POST['preference']) )
-		$pref = $_POST['preference'];
+	$pref = $_POST['preference'];
 	else
 	{
 		echo "aucune case n'a pas été cochée <br />";
@@ -71,8 +71,8 @@ if ( !empty($_POST ))
 	}
 
 
-	if (!empty($_POST['discret']) )
-		$val = $_POST['discret'];
+	/*if (!empty($_POST['discret']) )
+	$val = $_POST['discret'];
 
 	if ($erreur == false)
 	{
@@ -85,7 +85,7 @@ if ( !empty($_POST ))
 		echo "Gouts : $gouts<br>";
 		echo "caché : $val<br>";
 		foreach ($pref as $val)
-			echo $val.'<br/>';
+		echo $val.'<br/>';
 
 		$fic1 = $_FILES['fichier']['name'];
 		$fic2 = $_FILES['fichier']['type'];
@@ -101,11 +101,11 @@ if ( !empty($_POST ))
 
 		$result=move_uploaded_file($fic4,$fic1);
 		if($result==TRUE)
-		  echo "<hr /><big>Le  transfert est réalisé !</big>";
+		echo "<hr /><big>Le  transfert est réalisé !</big>";
 		else
-		  echo "<hr /> Erreur de transfert n°",$fic5;
+		echo "<hr /> Erreur de transfert n°",$fic5;
 
-	}
+	}*/
 }
 if ($erreur == true)
 {
