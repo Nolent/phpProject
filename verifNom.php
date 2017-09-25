@@ -36,4 +36,3 @@ function verifAll($nom)
     }
     return 1;
 }
-echo verifAll("ro-beé-rt");
