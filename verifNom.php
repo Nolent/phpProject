@@ -18,7 +18,7 @@ function verifTiret($nom)
 
 function verifEspace($nom)
 {
-    $motif = '/^ | $/';
+    $motif = '/^ | $|[a-zA-Z]  [a-zA-Z]/';
     return preg_match($motif, $nom);
 }
 
