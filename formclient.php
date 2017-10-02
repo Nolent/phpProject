@@ -3,6 +3,38 @@
 <!-- maison : http://localhost:8082/support_php/prof/e95.php -->
 
 <?php
+function remplirOption($tab,$nbLignes)
+{
+	for ($i=0;$i<$nbLignes;$i++)
+	{
+		$tab[$i]["NOM"] = utf8_encode($tab[$i]["NOM"]);
+		echo '<option value='.$tab[$i]['CODE_ISO'].'>'.$tab[$i]['NOM'];
+		echo '</option>';
+	}
+}
+function ListePays()
+{
+	include ("fonc_oracle.php");
+	$login = 'ETU2_53';
+	$mdp = 'ETU2_53';
+	$instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
+	// ce code ne doit pas être dans le <select> … </select>
+	$conn = OuvrirConnexion($login, $mdp,$instance);
+	$req = 'SELECT * FROM CDI_PAYS order by nom';
+	$cur = PreparerRequete($conn,$req);
+	$res = ExecuterRequete($cur);
+	$nbLignes = LireDonnees1($cur,$tab); // Attention, pas &$tab
+	FermerConnexion($conn);
+	if (!empty($_POST))
+	{
+		if (isset($_POST['coureur']))
+		{
+			$cour = $_POST['coureur'];
+			echo ("Pays $cour sélectionné");
+		}
+	}
+	remplirOption($tab,$nbLignes);
+}
 $erreur = true;
 if ( !empty($_POST ))
 //if ( isset ($_POST["nom"]) && isset($_POST["prenom"]) )
@@ -79,6 +111,7 @@ if ( !empty($_POST ))
 }
 if ($erreur == true)
 {
+	include ("utils.php");
 	include ("formclient.htm")	 ;
 }
 else{

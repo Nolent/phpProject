@@ -1,43 +1,47 @@
 <!--  E.Porcq	e95.htm  maj du 25/08/2015 -->
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <title>Nouveau Client</title>
-	    <script	 src="./javascript/javascript.js">     </script>
-  </head>
-  <body>
-	<form name="monFormulaire" action= "" method="post" enctype="multipart/form-data">
-		<fieldset>
-		<legend><b>Identité</b></legend>
-		<br />
-		<label for="nom">Nom : </label><input type="text" name="nom" size="30" maxlength="50" placeholder="nom ?"></input><br />
-		<label for="prenom">Prénom : </label><input type="text" name="prenom" size="30" maxlength="50" placeholder="prénom ?"></input><br />
-		<br/>
-    <legend><b>Type de compte</b></legend>
-		<select name="type" size="1">
-		  <option value="PME" > PME </option>
-		  <option value="GrandCompte" > Grand compte </option>
-		  <option value="Administration" selected > Administration </option>
-		  <option value="Particulier" > Particulier </option>
-		</select>
-    </br>
-    </br>
+<head>
+  <meta charset="utf-8">
+  <title>Nouveau Client</title>
+  <script	 src="./javascript/javascript.js">     </script>
+</head>
+<body>
+  <form name="monFormulaire" action= "" method="post" enctype="multipart/form-data">
     <fieldset>
+      <legend><b>Identité</b></legend>
+      <br />
+      <label for="nom">Nom : </label><input type="text" name="nom" size="30" maxlength="50" placeholder="nom ?"></input><br />
+      <label for="prenom">Prénom : </label><input type="text" name="prenom" size="30" maxlength="50" placeholder="prénom ?"></input><br />
+      <br/>
+      <legend><b>Type de compte</b></legend>
+      <select name="type" size="1">
+        <option value="PME" > PME </option>
+        <option value="GrandCompte" > Grand compte </option>
+        <option value="Administration" selected > Administration </option>
+        <option value="Particulier" > Particulier </option>
+      </select>
+    </br>
+  </br>
+  <fieldset>
     <legend><b>Localité</b></legend>
     <select name="pays" size="1">
+      <option > ---------------------------------</option>
+      <?php
+      ListePays();
+      ?>
     </select><br>
     <label for="ville">Ville : </label><input type="text" name="localite"></input><br />
-    </fieldset>
+  </fieldset>
+  <br />
+  <fieldset>
+    <input type="submit" name="EN" value="Envoyer" onclick=""> 		&nbsp;&nbsp;&nbsp;
+    <input type="reset" name="RE" value="Effacer">        &nbsp;&nbsp;&nbsp;
     <br />
-    <fieldset>
-		<input type="submit" name="EN" value="Envoyer" onclick=""> 		&nbsp;&nbsp;&nbsp;
-		<input type="reset" name="RE" value="Effacer">        &nbsp;&nbsp;&nbsp;
-        <br />
-    </fieldset>
-	  <br />
-	</form>
-  </body>
+  </fieldset>
+  <br />
+</form>
+</body>
 </html>
 
 
