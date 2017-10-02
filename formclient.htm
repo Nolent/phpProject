@@ -7,41 +7,31 @@
 	    <script	 src="./javascript/javascript.js">     </script>
   </head>
   <body>
-    <?php
-      include 'verifNom.php';
-    ?>
 	<form name="monFormulaire" action= "" method="post" enctype="multipart/form-data">
 		<fieldset>
 		<legend><b>Identité</b></legend>
 		<br />
-		<label for="nom">Nom : </label><input type="text" name="nom" size="30" maxlength="50" placeholder="nom ?" value="<?php verifAll("nom"); ?>" ></input><br />
-		<label for="prenom">Prénom : </label><input type="text" name="prenom" value="<?php verifAll("prenom"); ?>" ></input><br />
+		<label for="nom">Nom : </label><input type="text" name="nom" size="30" maxlength="50" placeholder="nom ?"></input><br />
+		<label for="prenom">Prénom : </label><input type="text" name="prenom" size="30" maxlength="50" placeholder="prénom ?"></input><br />
 		<br/>
     <legend><b>Type de compte</b></legend>
 		<select name="type" size="1">
-		  <option value="PME"   <?php VerifierSelect("type","PME"); ?> > PME </option>
-		  <option value="GrandCompte" <?php VerifierSelect("type","GrandCompte"); ?> > Grand compte </option>
-		  <option value="Administration"   <?php VerifierSelect("type","Administration");   ?> selected > Administration </option>
-		  <option value="Particulier"   <?php VerifierSelect("type","Particulier");   ?> > Particulier </option>
+		  <option value="PME" > PME </option>
+		  <option value="GrandCompte" > Grand compte </option>
+		  <option value="Administration" selected > Administration </option>
+		  <option value="Particulier" > Particulier </option>
 		</select>
     </br>
     </br>
     <fieldset>
     <legend><b>Localité</b></legend>
     <select name="pays" size="1">
-      <?php
-      for ($i=0;$i<$nbLignes;$i++){
-        $tab[$i]["NOM"] = utf8_encode($tab[$i]["PRENOM"]);
-        echo '<option value="'.$tab[$i]["N_COUREUR"].'">'.$tab[$i]['NOM'].' '.$tab[$i]['PRENOM'];
-        echo '</option>';
-      }
-    ?>
-  </select><br>
-    <label for="prenom">Ville : </label><input type="text" name="localite" value="<?php verifAll("localite"); ?>" ></input><br />
+    </select><br>
+    <label for="ville">Ville : </label><input type="text" name="localite"></input><br />
     </fieldset>
     <br />
     <fieldset>
-		<input type="submit" name="EN" value="Envoyer" onclick="return testerValid()"> 		&nbsp;&nbsp;&nbsp;
+		<input type="submit" name="EN" value="Envoyer" onclick=""> 		&nbsp;&nbsp;&nbsp;
 		<input type="reset" name="RE" value="Effacer">        &nbsp;&nbsp;&nbsp;
         <br />
     </fieldset>

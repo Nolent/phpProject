@@ -20,7 +20,7 @@ if ( !empty($_POST ))
 		echo "le nom est vide <br />";
 		$erreur = true;
 	}
-	if (!empty($_POST['prenom']) && $_POST['prenom'] != "")
+	if (!empty($_POST['prenom']) && $_POST['prenom'] != "prenom")
 	$prenom = $_POST['prenom'] ;
 	else
 	{
@@ -55,7 +55,7 @@ if ( !empty($_POST ))
 		echo "PRENOM : $prenom <br />";
 		echo "PAYS : $pays <br />";
 		echo "VILLE : $localite <br />";
-		echo "TYPE : $type <br />"
+		echo "TYPE : $type <br />";
 
 		$fic1 = $_FILES['fichier']['name'];
 		$fic2 = $_FILES['fichier']['type'];
@@ -79,7 +79,6 @@ if ( !empty($_POST ))
 }
 if ($erreur == true)
 {
-	include ("utils.php");
 	include ("formclient.htm")	 ;
 }
 else{
