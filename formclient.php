@@ -28,7 +28,7 @@ if ( !empty($_POST ))
 		$erreur = true;
 	}
 	if (isset($_POST['localite']))
-	$code = $_POST['code'] ;
+	$localite = $_POST['localite'] ;
 	else
 	{
 		echo "le mot de passe est vide <br />";
@@ -49,21 +49,13 @@ if ( !empty($_POST ))
 		$erreur = true;
 	}
 
-	/*if (!empty($_POST['discret']) )
-	$val = $_POST['discret'];
-
 	if ($erreur == false)
 	{
 		echo "NOM : $nom <br />";
 		echo "PRENOM : $prenom <br />";
-		echo "CIVILITE : $civ <br />";
 		echo "PAYS : $pays <br />";
-		echo "Gouts : $gouts <br />";
-		$gouts = stripslashes($gouts);
-		echo "Gouts : $gouts<br>";
-		echo "caché : $val<br>";
-		foreach ($pref as $val)
-		echo $val.'<br/>';
+		echo "VILLE : $localite <br />";
+		echo "TYPE : $type <br />"
 
 		$fic1 = $_FILES['fichier']['name'];
 		$fic2 = $_FILES['fichier']['type'];
@@ -83,7 +75,7 @@ if ( !empty($_POST ))
 		else
 		echo "<hr /> Erreur de transfert n°",$fic5;
 
-	}*/
+	}
 }
 if ($erreur == true)
 {

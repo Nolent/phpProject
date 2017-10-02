@@ -7,14 +7,14 @@
 	  }
 	}
 
-	function testerValid()	  
+	function testerValid()
 	{
 		if (monFormulaire.nom.value == "")
 		  return false;
 		else
 		  return true;
 	}
-	
+
 	function readURL(input) {
 		var img =  document.getElementById("image");
 		img.src = input.value;
