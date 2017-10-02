@@ -30,7 +30,7 @@
     <legend><b>Localité</b></legend>
     <select name="pays" size="1">
       <?php
-      for ($i=0;$i<$nbLignes;$i++){
+      for ($i=0;$i< $nbLignes;$i++){
         $tab[$i]["NOM"] = utf8_encode($tab[$i]["PRENOM"]);
         echo '<option value="'.$tab[$i]["N_COUREUR"].'">'.$tab[$i]['NOM'].' '.$tab[$i]['PRENOM'];
         echo '</option>';
