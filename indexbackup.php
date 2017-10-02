@@ -1,13 +1,4 @@
 <?php
-function remplirOption($tab,$nbLignes)
-{
-	for ($i=0;$i<$nbLignes;$i++)
-	{
-		$tab[$i]["NOM"] = utf8_encode($tab[$i]["NOM"]);
-		echo '<option value='.$tab[$i]['CODE_ISO'].'>'.$tab[$i]['NOM'];
-		echo '</option>';
-	}
-}
 function ListePays()
 {
 	include ("fonc_oracle.php");
@@ -29,7 +20,8 @@ function ListePays()
 			echo ("Pays $cour sélectionné");
 		}
 	}
-	remplirOption($tab,$nbLignes);
+	else
+	include ("index.htm");
 }
 $erreur = true;
 if ( !empty($_POST ))
@@ -138,7 +130,7 @@ if ( !empty($_POST ))
 if ($erreur == true)
 {
 	include ("utils.php");
-	include ("index.htm");
+	include ("index.htm")	 ;
 }
 else{
 	echo '<script>document.location="https://www.iutc3.unicaen.fr/c3"</script>';

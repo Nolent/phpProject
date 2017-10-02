@@ -1,5 +1,13 @@
 <?php
-
+	function remplirOption($tab,$nbLignes)
+	{
+		for ($i=0;$i<$nbLignes;$i++)
+		{
+			$tab[$i]["PRENOM"] = utf8_encode($tab[$i]["PRENOM"]);
+			echo '<option value="'.$tab[$i]["N_COUREUR"].'">'.$tab[$i]['NOM'].' '.$tab[$i]['PRENOM'];
+			echo '</option>';
+		}
+	}
 ?>
 <!--  E.Porcq	e95.htm  maj du 25/08/2015 -->
 <!DOCTYPE html>
@@ -35,6 +43,7 @@
       <option > ---------------------------------</option>
       <?php
       ListePays();
+      remplirOption($tab,$nbLignes);
       ?>
     </select><br>
     <label for="prenom">Ville : </label><input type="text" name="localite" value="<?php verifAll("localite"); ?>" ></input><br />
