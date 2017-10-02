@@ -34,9 +34,19 @@
     <select name="pays" size="1">
       <option > ---------------------------------</option>
       <?php
+<<<<<<< HEAD
       ListePays();
       ?>
     </select><br>
+=======
+      for ($i=0;$i< $nbLignes;$i++){
+        $tab[$i]["NOM"] = utf8_encode($tab[$i]["PRENOM"]);
+        echo '<option value="'.$tab[$i]["N_COUREUR"].'">'.$tab[$i]['NOM'].' '.$tab[$i]['PRENOM'];
+        echo '</option>';
+      }
+    ?>
+  </select><br>
+>>>>>>> 3a030b587b90519f7e8ebe2ba66cc8d1be836437
     <label for="prenom">Ville : </label><input type="text" name="localite" value="<?php verifAll("localite"); ?>" ></input><br />
   </fieldset>
   <br />

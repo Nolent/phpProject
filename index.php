@@ -55,29 +55,15 @@ if ( !empty($_POST ))
 		echo "le prénom est vide <br />";
 		$erreur = true;
 	}
-	if (!empty($_POST['courriel']) && $_POST['courriel'] != "courriel ?")
-	$courriel = $_POST['courriel'] ;
-	else
-	{
-		echo "le courriel est vide <br />";
-		$erreur = true;
-	}
-	if (!empty($_POST['gouts']) && $_POST['gouts'] != "quoi d'autre ? ?")
-	$gouts = $_POST['gouts'] ;
-	else
-	{
-		echo "les autres gouts ne sont pas remplis <br />";
-		$erreur = true;
-	}
-	if (!empty($_POST['code']))
+	if (isset($_POST['localite']))
 	$code = $_POST['code'] ;
 	else
 	{
 		echo "le mot de passe est vide <br />";
 		$erreur = true;
 	}
-	if (isset($_POST['civilite']) )
-	$civ = $_POST['civilite'];
+	if (isset($_POST['type']) )
+	$type = $_POST['type'];
 	else
 	{
 		echo "la civilité n'a pas été cochée <br />";
@@ -90,14 +76,6 @@ if ( !empty($_POST ))
 		echo "le pays n'a pas été sélectionné <br />";
 		$erreur = true;
 	}
-	if (isset($_POST['preference']) )
-	$pref = $_POST['preference'];
-	else
-	{
-		echo "aucune case n'a pas été cochée <br />";
-		$erreur = true;
-	}
-
 
 	/*if (!empty($_POST['discret']) )
 	$val = $_POST['discret'];
@@ -138,7 +116,11 @@ if ( !empty($_POST ))
 if ($erreur == true)
 {
 	include ("utils.php");
+<<<<<<< HEAD
 	include ("index.htm");
+=======
+	include ("formclient.htm")	 ;
+>>>>>>> 3a030b587b90519f7e8ebe2ba66cc8d1be836437
 }
 else{
 	echo '<script>document.location="https://www.iutc3.unicaen.fr/c3"</script>';
