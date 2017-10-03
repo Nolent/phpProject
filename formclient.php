@@ -52,6 +52,7 @@ if ( !empty($_POST ))
 		echo "le nom est vide <br />";
 		$erreur = true;
 	}
+	echo erreur;
 	if (!empty($_POST['prenom']) && $_POST['prenom'] != "prenom")
 	$prenom = $_POST['prenom'] ;
 	else
@@ -59,6 +60,7 @@ if ( !empty($_POST ))
 		echo "le prénom est vide <br />";
 		$erreur = true;
 	}
+	echo erreur;
 	if (isset($_POST['localite']))
 	$localite = $_POST['localite'] ;
 	else
@@ -88,24 +90,6 @@ if ( !empty($_POST ))
 		echo "PAYS : $pays <br />";
 		echo "VILLE : $localite <br />";
 		echo "TYPE : $type <br />";
-
-		$fic1 = $_FILES['fichier']['name'];
-		$fic2 = $_FILES['fichier']['type'];
-		$fic3 = $_FILES['fichier']['size'];
-		$fic4 = $_FILES['fichier']['tmp_name'];
-		$fic5 = $_FILES['fichier']['error'];
-
-		echo "fic1 : $fic1<br>";
-		echo "fic2 : $fic2<br>";
-		echo "fic3 : $fic3<br>";
-		echo "fic4 : $fic4<br>";
-		echo "fic5A : $fic5<br>";
-
-		$result=move_uploaded_file($fic4,$fic1);
-		if($result==TRUE)
-		echo "<hr /><big>Le  transfert est réalisé !</big>";
-		else
-		echo "<hr /> Erreur de transfert n°",$fic5;
 
 	}
 }

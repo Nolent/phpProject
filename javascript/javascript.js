@@ -28,3 +28,9 @@
 		img.src = input.value;
         img.style.display = "block";
 	}
+
+	function particulier(){
+		var field = document.getElementsByName("CA");
+		var ca = field[0];
+		ca.type = "hidden";
+	}

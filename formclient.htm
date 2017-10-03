@@ -19,18 +19,19 @@
         <option value="PME" > PME </option>
         <option value="GrandCompte" > Grand compte </option>
         <option value="Administration" selected > Administration </option>
-        <option value="Particulier" > Particulier </option>
+        <option value="Particulier" onclick="particulier()" > Particulier </option>
       </select>
-    </br>
+    </br><br/>
+      <label for="CA">Chiffre d'affaire : </label><input type="text" name ="CA" size="30" maxlength="50"></input><br/>
   </br>
   <fieldset>
-    <legend><b>Localité</b></legend>
+    <legend><b>Localité</b></legend><br/>
     <select name="pays" size="1">
       <option > ---------------------------------</option>
       <?php
       ListePays();
       ?>
-    </select><br>
+    </select><br><br/>
     <label for="ville">Ville : </label><input type="text" name="localite"></input><br />
   </fieldset>
   <br />
