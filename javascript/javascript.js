@@ -32,12 +32,11 @@
 	function particulier(){
 		var field = document.getElementsByName("CA");
 		var ca = field[0];
-		ca.type = "hidden";
-		ca.value = NULL;
-		alert(ca.value);
+		ca.disabled = true;
+		ca.value = "";
 	}
 	function autreQuePart(){
 		var field = document.getElementsByName("CA");
 		var ca = field[0];
-		ca.type = "text";
+		ca.disabled = false;
 	}
