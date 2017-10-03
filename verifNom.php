@@ -89,3 +89,14 @@ function verifAndConvert($nom, $type = false) //true = prenom, false == nom de f
     }
     return 1;
 }
+
+function verifAndConvertAll($nom, $prenom, $localite)
+{
+    $tab = array();
+
+    $tab['nom'] = verifAndConvert($nom);
+    $tab['prenom'] = verifAndConvert($prenom, true);
+    $tab['localite'] = verifAndConvert($localite, true);
+
+    return $tab;
+}
