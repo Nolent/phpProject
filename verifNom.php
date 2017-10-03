@@ -100,3 +100,9 @@ function verifAndConvertAll($nom, $prenom, $localite)
 
     return $tab;
 }
+
+function verifChiffre($value)
+{
+    $motif = '/[^0-9]/';
+    return preg_match($motif, $value);
+}

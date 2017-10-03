@@ -11,7 +11,8 @@ $conn = OuvrirConnexion($login, $mdp, $instance);
 function ajoutClient($nom, $prenom, $pays, $localite, $type, $ca = null)
 {
     global $conn;
-    $req = 'insert into CDI_CLIENT values (concat("C",count(*)),$nom,$prenom,$pays,$localite,$ca,$type, null)';
+    $req = 'insert into CDI_CLIENT values
+    (concat("C",select primaire.nextval from dual;),$nom,$prenom,$pays,$localite,$ca,$type, null)';
     $cur = PreparerRequete($conn, $req);
     $res = ExecuterRequete($cur);
 }
