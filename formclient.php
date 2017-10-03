@@ -52,7 +52,6 @@ if ( !empty($_POST ))
 		echo "le nom est vide <br />";
 		$erreur = true;
 	}
-	echo erreur;
 	if (!empty($_POST['prenom']) && $_POST['prenom'] != "prenom")
 	$prenom = $_POST['prenom'] ;
 	else
@@ -60,19 +59,18 @@ if ( !empty($_POST ))
 		echo "le prénom est vide <br />";
 		$erreur = true;
 	}
-	echo erreur;
 	if (isset($_POST['localite']))
 	$localite = $_POST['localite'] ;
 	else
 	{
-		echo "le mot de passe est vide <br />";
+		echo "la ville est vide <br />";
 		$erreur = true;
 	}
 	if (isset($_POST['type']) )
 	$type = $_POST['type'];
 	else
 	{
-		echo "la civilité n'a pas été cochée <br />";
+		echo "le type de compte n'est pas selectionné <br />";
 		$erreur = true;
 	}
 	if (isset($_POST['pays']) )
@@ -80,6 +78,16 @@ if ( !empty($_POST ))
 	else
 	{
 		echo "le pays n'a pas été sélectionné <br />";
+		$erreur = true;
+	}
+	if (!isset($_POST["CA"]) && $_POST["type"] == "Particulier"){
+		$ca = NULL;
+	}
+	else if (isset($_POST["CA"])){
+		$ca = $_POST["CA"];
+	}
+	else {
+		echo "le chiffre d'affaire n'est pas mentionné <br />";
 		$erreur = true;
 	}
 
@@ -90,7 +98,7 @@ if ( !empty($_POST ))
 		echo "PAYS : $pays <br />";
 		echo "VILLE : $localite <br />";
 		echo "TYPE : $type <br />";
-
+		echo "CA : $ca <br />";
 	}
 }
 if ($erreur == true)
