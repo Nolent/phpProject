@@ -1,11 +1,17 @@
 <?php
 require 'fonc_oracle.php';
 
+$login = 'ETU2_53';
+$mdp = 'ETU2_53';
+$instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
+// ce code ne doit pas être dans le <select> … </select>
+$conn = OuvrirConnexion($login, $mdp, $instance);
 
-function ajoutClient($nom, $prenom, $pays, $localite, $type, $emp_enum, $ca = null)
+
+function ajoutClient($nom, $prenom, $pays, $localite, $type, $ca = null)
 {
-    $conn = OuvrirConnexion('ETU2_53', 'ETU2_53', 'spartacus.iutc3.unicaen.fr');
-    $req = "insert into CDI_CLIENT value (count(*),$nom,$prenom,$pays,$localite,$ca,$type, $emp_enum)";
+    global $conn;
+    $req = 'insert into CDI_CLIENT values (concat("C",count(*)),$nom,$prenom,$pays,$localite,$ca,$type, null)';
     $cur = PreparerRequete($conn, $req);
     $res = ExecuterRequete($cur);
 }
