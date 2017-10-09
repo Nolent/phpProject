@@ -73,14 +73,7 @@ function LireDonnees1($cur, &$tab)
 //---------------------------------------------------------------------------------------------
 function LireDonnees2($cur, &$tab)
 {
-    $nbLignes = 0;
-    $i=0;
-    while ($row = oci_fetch_array ($cur, OCI_BOTH  )) {
-        $tab[$nbLignes][$i]  = $row[0];
-        $tab[$nbLignes][$i+1]  = $row[1];
-        $tab[$nbLignes][$i+2]  = $row[2];
-        $nbLignes++;
-    }
+    $nbLignes = oci_fetch_all($cur, $tab, 0, -1, OCI_FETCHSTATEMENT_BY_COLUMN|OCI_ASSOC);
     return $nbLignes;
 }
 //---------------------------------------------------------------------------------------------
@@ -101,13 +94,13 @@ function LireDonnees3($cur, &$tab)
 function AfficherDonnee1($tab, $nbLignes)
 {
     if ($nbLignes > 0) {
-        echo "<table border=\"1\">\n";
-        echo "<tr>\n";
+        echo '<table border=\"1\" id="client" class="tablesorter">';
+        echo '<thead> <tr class ="tablesorter-headerRow">';
         foreach ($tab as $key => $val) {  // lecture des noms de colonnes
             echo "<th>$key</th>\n";
         }
-        echo "</tr>\n";
-        echo $nbLignes;
+        echo "</tr> </thead> \n";
+        echo '<tbody>';
         for ($i = 0; $i < $nbLignes; $i++) { // balayage de toutes les lignes
             echo "<tr>\n";
             foreach ($tab as $data) { // lecture des enregistrements de chaque colonne
@@ -115,7 +108,7 @@ function AfficherDonnee1($tab, $nbLignes)
             }
             echo "</tr>\n";
         }
-        echo "</table>\n";
+        echo "</tbody> </table>\n";
     } else {
         echo "Pas de ligne<br />\n";
     }
