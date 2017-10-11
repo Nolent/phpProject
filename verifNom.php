@@ -19,7 +19,9 @@ function verifTiretNom($nom)
 function verifTiretPrenom($nom)
 {
     if (verifTiretNom($nom) == 0) {
-        return preg_match('/--/', $nom);
+        if (preg_match('/--/', $nom) == 0) {
+            return 0;
+        }
     }return 1;
 }
 
