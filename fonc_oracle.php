@@ -91,7 +91,7 @@ function LireDonnees3($cur, &$tab)
 }
 //---------------------------------------------------------------------------------------------
 // fonctions autres
-function AfficherDonnee1($tab, $n$curbLignes)
+function AfficherDonnee1($tab, $nbLignes)
 {
     if ($nbLignes > 0) {
         echo '<table border=\"1\" id="client" class="tablesorter">';
@@ -139,6 +139,5 @@ function AfficherTab($tab)
 //---------------------------------------------------------------------------------------------
 function CompterNbLigne($cur){
     return oci_num_rows($cur);
-
 }
 ?>
