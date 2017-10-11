@@ -137,7 +137,8 @@ function AfficherTab($tab)
     print_r($tab);
 }
 //---------------------------------------------------------------------------------------------
-function CompterNbLigne($cur){
+function CompterNbLigne($cur)
+{
     return oci_num_rows($cur);
 }
 ?>
