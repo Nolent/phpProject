@@ -8,23 +8,8 @@ $instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
 $conn = OuvrirConnexion($login, $mdp, $instance);
 
 
-function ajoutClient($nom, $prenom, $pays, $localite, $type, $ca = NULL)
+function ajoutClient($nom, $prenom, $pays, $localite, $type, $ca)
 {
     global $conn;
-    //select * from cdi_client;insert into cdi_client(cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cm_ca,cl_type) values (select concat("C",count(*)) as nbClient from cdi_client,"MICHEL","michel","F","PARIS",null,"Particulier");
 
-    $reqClient = 'select * from cdi_client';
-    $curClient = PreparerRequete($conn, $req);
-    $resClient = ExecuterRequete($curClient);
-    $nbClient = CompterNbLigne($curClient);
-    $nbClient++;
-    echo $nbClient;
-    if (isset($ca)) {
-      $reqClient = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_ca,cl_type) values ('C$nbClient','$nom','$prenom','$pays','$localite',$ca,'$type')";
-    } else {
-      $reqClient = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_type) values ('C$nbClient','$nom','$prenom','$pays','$localite' ,'$type')";
-    }
-
-    $cur = PreparerRequete($conn, $req);
-    $res = ExecuterRequete($cur);
 }

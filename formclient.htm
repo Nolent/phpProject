@@ -18,16 +18,15 @@
       <select name="type" size="1">
         <option value="PME" onclick="autreQuePart()"> PME </option>
         <option value="GrandCompte" onclick="autreQuePart()"> Grand compte </option>
-        <option value="Administration" onclick="autreQuePart()" selected > Administration </option>
-        <option value="Particulier" onclick="particulier()" > Particulier </option>
+        <option value="Administration" onclick="autreQuePart()"> Administration </option>
+        <option value="Particulier" onclick="particulier()" selected> Particulier </option>
       </select>
     </br><br/>
-    <label for="CA">Chiffre d'affaire : </label><input type="text" name ="CA" size="30" maxlength="50"></input><br/>
+    <label for="CA">Chiffre d'affaire : </label><input type="text" name ="CA" size="30" maxlength="50" disabled></input><br/>
   </br>
   <fieldset>
     <legend><b>Localité</b></legend><br/>
     <select name="pays" size="1">
-      <option > ---------------------------------</option>
       <?php
       ListePays();
       ?>

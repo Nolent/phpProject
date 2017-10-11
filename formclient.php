@@ -8,8 +8,8 @@ function remplirOption($tab,$nbLignes)
 	for ($i=0;$i<$nbLignes;$i++)
 	{
 		$tab[$i]["NOM"] = utf8_encode($tab[$i]["NOM"]);
-		if ($tab[$i]['NOM']=="FRANCE")
-			echo '<option value='.$tab[$i]['NOM'].' selected >'.$tab[$i]['NOM'];		
+		if ($tab[$i]['NOM']=='FRANCE')
+			echo '<option value='.$tab[$i]['NOM'].' selected >'.$tab[$i]['NOM'];
 		else
 			echo '<option value='.$tab[$i]['NOM'].'>'.$tab[$i]['NOM'];
 		echo '</option>';
