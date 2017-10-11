@@ -8,7 +8,10 @@ function remplirOption($tab,$nbLignes)
 	for ($i=0;$i<$nbLignes;$i++)
 	{
 		$tab[$i]["NOM"] = utf8_encode($tab[$i]["NOM"]);
-		echo '<option value='.$tab[$i]['CODE_ISO'].'>'.$tab[$i]['NOM'];
+		if ($tab[$i]['NOM']=="FRANCE")
+			echo '<option value='.$tab[$i]['NOM'].' selected >'.$tab[$i]['NOM'];		
+		else
+			echo '<option value='.$tab[$i]['NOM'].'>'.$tab[$i]['NOM'];
 		echo '</option>';
 	}
 }
@@ -27,9 +30,9 @@ function ListePays()
 	FermerConnexion($conn);
 	if (!empty($_POST))
 	{
-		if (isset($_POST['coureur']))
+		if (isset($_POST['pays']))
 		{
-			$cour = $_POST['coureur'];
+			$cour = $_POST['pays'];
 			echo ("Pays $cour sélectionné");
 		}
 	}
