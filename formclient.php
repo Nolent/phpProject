@@ -93,12 +93,14 @@ if ( !empty($_POST ))
 
 	if ($erreur == false)
 	{
+		include ('accesTable.php');
 		echo "NOM : $nom <br />";
 		echo "PRENOM : $prenom <br />";
 		echo "PAYS : $pays <br />";
 		echo "VILLE : $localite <br />";
 		echo "TYPE : $type <br />";
 		echo "CA : $ca <br />";
+		ajoutClient($nom,$prenom,$pays,$localite,$type,$ca);
 	}
 }
 if ($erreur == true)
@@ -107,6 +109,6 @@ if ($erreur == true)
 	include ("formclient.htm")	 ;
 }
 else{
-	echo 'pas bon';
+	echo "C'est bon";
 }
 ?>
