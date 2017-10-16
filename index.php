@@ -26,8 +26,11 @@
 	</nav>
 </header>
 <body>
-	<div class="row" style="position: absolute; top: 50%; text-align: center; width: 100%;">
-   <p>yo</p>
- </div>
+	<div class="row" style="position: absolute; top: 30%; text-align: center; width: 100%;">
+		<div class="page-header">
+			<h1>Gestion de clients</h1>
+		</div>
+			<a href="./formclient.php"><button type="button" class="btn">Ajouter un client</button></a>
+	</div>
 </body>
 </html>
