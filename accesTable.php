@@ -32,4 +32,3 @@ function ajoutClient($nom, $prenom, $pays, $localite, $type, $ca)
     $cur = PreparerRequete($conn, $req);
     ExecuterRequete($cur);
 }
-?>
