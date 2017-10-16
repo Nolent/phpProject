@@ -85,9 +85,11 @@ if ( !empty($_POST ))
 	}
 
 	if ($_POST["type"] == "Particulier"){
+		echo "CA est null";
 		$ca = NULL;
 	}
-	else if ($_POST["type"] != "Particulier"){
+	else if ($_POST["type"] != "Particulier" &&( isset($_POST["CA"]) || !empty($_POST["CA"]) )){
+		echo "CA non null";
 		$ca = $_POST["CA"];
 	}
 	else {
