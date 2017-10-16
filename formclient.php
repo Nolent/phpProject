@@ -39,48 +39,37 @@ function ListePays()
 $erreur = true;
 if (!empty($_POST )) {
 //if ( isset ($_POST["nom"]) && isset($_POST["prenom"]) )
-    echo"<pre>";
-    print_r($_POST);
-    echo "</PRE>";
-    echo "décodage sur le serveur <br />";
-
     $erreur = false;
     if (!empty($_POST['nom']) && $_POST['nom'] != "nom ?") {
         $nom = $_POST['nom'];
     } else {
-        echo "le nom est vide <br />";
         $erreur = true;
     }
     if (!empty($_POST['prenom']) && $_POST['prenom'] != "prenom") {
         $prenom = $_POST['prenom'] ;
     } else {
-        echo "le prénom est vide <br />";
         $erreur = true;
     }
     if (isset($_POST['localite'])) {
         $localite = $_POST['localite'] ;
     } else {
-        echo "la ville est vide <br />";
         $erreur = true;
     }
     if (isset($_POST['type'])) {
         $type = $_POST['type'];
     } else {
-        echo "le type de compte n'est pas selectionné <br />";
         $erreur = true;
     }
     if (isset($_POST['pays'])) {
         $pays = $_POST['pays'];
     } else {
-        echo "le pays n'a pas été sélectionné <br />";
         $erreur = true;
     }
-    if ((!isset($_POST["CA"]) || empty($_POST["CA"])) && $_POST["type"] == "Particulier") {
+    if ((!isset($_POST["CA"]) || empty($_POST["CA"])) || $_POST["type"] == "Particulier") {
         $ca = null;
     } elseif (isset($_POST["CA"])) {
         $ca = $_POST["CA"];
     } else {
-        echo "le chiffre d'affaire n'est pas mentionné <br />";
         $erreur = true;
     }
 
@@ -95,6 +84,9 @@ if (!empty($_POST )) {
             include ('accesTable.php');
             ajoutClient($nom, $prenom, $pays, $localite, $type, $ca);
             FermerConnexion($conn);
+
+            include ("formclient.htm");
+            echo '<script>Entrée dans la base réussie</script>';
         } else {
             $erreur = true;
             if ($nom == 1) {
@@ -111,8 +103,7 @@ if (!empty($_POST )) {
 }
 if ($erreur == true) {
     include ("utils.php");
-    include ("formclient.htm")   ;
+    include ("formclient.htm");
 } else {
-    echo "C'est bon";
 }
 ?>

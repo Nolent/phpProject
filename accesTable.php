@@ -17,14 +17,11 @@ function ajoutClient($nom, $prenom, $pays, $localite, $type, $ca)
     ExecuterRequete($cur);
     $tab;
     $nbClient = LireDonnees2($cur, $tab);
-    echo "nombre de clients : ".$nbClient."</br>";
     $nbClient++;
     if (isset($ca)) {
-      $req = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_ca,cl_type) values ('$nbClient','$nom','$prenom','$pays','$localite',$ca,'$type')";
-      echo "ca definie";
+        $req = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_ca,cl_type) values ('$nbClient','$nom','$prenom','$pays','$localite',$ca,'$type')";
     } else {
-      $req = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_type) values ('$nbClient','$nom','$prenom','$pays','$localite' ,'$type')";
-      echo "ca non définie";
+        $req = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_type) values ('$nbClient','$nom','$prenom','$pays','$localite' ,'$type')";
     }
     $cur = PreparerRequete($conn, $req);
     ExecuterRequete($cur);
