@@ -9,7 +9,7 @@ function remplirOption($tab,$nbLignes)
 	{
 		$tab[$i]["NOM"] = utf8_encode($tab[$i]["NOM"]);
 		if ($tab[$i]['NOM']=="FRANCE")
-			echo '<option value='.$tab[$i]['NOM'].' selected >'.$tab[$i]['NOM'];		
+			echo '<option value='.$tab[$i]['NOM'].' selected >'.$tab[$i]['NOM'];
 		else
 			echo '<option value='.$tab[$i]['NOM'].'>'.$tab[$i]['NOM'];
 		echo '</option>';
@@ -97,13 +97,16 @@ if ( !empty($_POST ))
 	if ($erreur == false)
 	{
 		include ('accesTable.php');
-		echo "NOM : $nom <br />";
-		echo "PRENOM : $prenom <br />";
-		echo "PAYS : $pays <br />";
-		echo "VILLE : $localite <br />";
-		echo "TYPE : $type <br />";
-		echo "CA : $ca <br />";
-		ajoutClient($nom,$prenom,$pays,$localite,$type,$ca);
+		include ('verifNom.php');
+
+		$nom = verifAndConvert($nom);
+		$prenom = verifAndConvert($prenom,true);
+		$localite = verifAndConvert($localite);
+
+		if ($nom != 1 && $prenom != 1 && $localite != 1 && verifChiffre($ca) == 0) {
+			ajoutClient($nom,$prenom,$pays,$localite,$type,$ca);
+		}else $erreur = true;
+
 	}
 }
 if ($erreur == true)
