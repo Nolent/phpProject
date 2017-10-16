@@ -99,20 +99,20 @@ function majuscule($nom)
 function verifAndConvert($nom, $type = false) //true = prenom, false == nom de famille
 {
     if ($type) {
-        if (verifAllPrenom($nom)==0) {
+        if (verifAllPrenom($nom)==0 && count($nom) < 25) {
             $nom = strtolower($nom);
             $nom = majuscule($nom);
 
             return $nom;
         }
     } else {
-        if (verifAllNom($nom)==0) {
+        if (verifAllNom($nom)==0 && count($nom) < 25) {
             return strtoupper(convertAccent($nom));
         }
     }
     return 1;
 }
-echo verifAndConvert("é", true);
+
 function verifAndConvertAll($nom, $prenom, $localite)
 {
     $tab = array();
@@ -127,5 +127,9 @@ function verifAndConvertAll($nom, $prenom, $localite)
 function verifChiffre($value)
 {
     $motif = '/[^0-9]/';
-    return preg_match($motif, $value);
+
+    if (preg_match($motif, $value) != 0) {
+      return 1;
+    }
+    return 0;
 }
