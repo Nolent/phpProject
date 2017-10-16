@@ -97,6 +97,15 @@ if (!empty($_POST )) {
             FermerConnexion($conn);
         } else {
             $erreur = true;
+            if ($nom == 1) {
+                echo '<script>alert("Charactere interdit dans nom")</script>';
+            } elseif ($prenom == 1) {
+                echo '<script>alert("Charactere interdit dans prenom")</script>';
+            } elseif ($localite != 1) {
+                echo '<script>alert("Charactere interdit dans ville")</script>';
+            } else {
+                echo '<script>alert("Il ne peut y avoir que des nombres dans CA")</script>';
+            }
         }
     }
 }

@@ -128,8 +128,8 @@ function verifChiffre($value)
 {
     $motif = '/[^0-9]/';
 
-    if (preg_match($motif, $value) != 0) {
-      return 1;
+    if (preg_match($motif, $value) != 0 || (intval($value)>=99999 || intval($value)<0 )) {
+        return 1;
     }
     return 0;
 }
