@@ -50,7 +50,7 @@ if (!empty($_POST )) {
     } else {
         $erreur = true;
     }
-    if (isset($_POST['localite'])) {
+    if (!empty($_POST['localite']) && $_POST['localite'] != "ville") {
         $localite = $_POST['localite'] ;
     } else {
         $erreur = true;
@@ -67,7 +67,7 @@ if (!empty($_POST )) {
     }
     if ((!isset($_POST["CA"]) || empty($_POST["CA"])) || $_POST["type"] == "Particulier") {
         $ca = null;
-    } elseif (isset($_POST["CA"])) {
+    } elseif (!empty($_POST['CA'])) {
         $ca = $_POST["CA"];
     } else {
         $erreur = true;
