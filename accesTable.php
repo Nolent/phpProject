@@ -20,10 +20,10 @@ function ajoutClient($nom, $prenom, $pays, $localite, $type, $ca)
     echo "nombre de clients : ".$nbClient."</br>";
     $nbClient++;
     if (isset($ca)) {
-      $req = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_ca,cl_type) values ('C$nbClient','$nom','$prenom','$pays','$localite',$ca,'$type')";
+      $req = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_ca,cl_type) values ('$nbClient','$nom','$prenom','$pays','$localite',$ca,'$type')";
       echo "ca definie";
     } else {
-      $req = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_type) values ('C$nbClient','$nom','$prenom','$pays','$localite' ,'$type')";
+      $req = "insert into CDI_CLIENT (cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cl_type) values ('$nbClient','$nom','$prenom','$pays','$localite' ,'$type')";
       echo "ca non définie";
     }
     $cur = PreparerRequete($conn, $req);
