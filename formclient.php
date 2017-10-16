@@ -83,10 +83,11 @@ if ( !empty($_POST ))
 		echo "le pays n'a pas été sélectionné <br />";
 		$erreur = true;
 	}
-	if ((!isset($_POST["CA"]) || empty($_POST["CA"])) && $_POST["type"] == "Particulier"){
+
+	if ($_POST["type"] == "Particulier"){
 		$ca = NULL;
 	}
-	else if (isset($_POST["CA"])){
+	else if ($_POST["type"] != "Particulier"){
 		$ca = $_POST["CA"];
 	}
 	else {

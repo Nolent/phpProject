@@ -25,6 +25,11 @@ function verifTiretPrenom($nom)
     }return 1;
 }
 
+function verifApostrophe($nom)
+{
+    $motif = '/\'\'/';
+    return preg_match($motif, $nom);
+}
 
 function verifEspace($nom)
 {
@@ -42,7 +47,7 @@ function verifLettres($nom)
 
 function verifAllNom($nom)
 {
-    if (verifLettres($nom) == 0 && verifEspace($nom)==0 && verifTiretNom($nom)==0) {
+    if (verifLettres($nom) == 0 && verifEspace($nom)==0 && verifTiretNom($nom)==0 && verifApostrophe($nom)==0) {
         return 0;
     }
     return 1;
@@ -72,16 +77,32 @@ function convertAccent($nom)
     $url = preg_replace('#Ù|Ú|Û|Ü#', 'U', $url);
     $url = preg_replace('#ý|ÿ#', 'y', $url);
     $url = preg_replace('#Ý#', 'Y', $url);
+    $url = preg_replace('#æ|Æ#', 'ae', $url);
+    $url = preg_replace('#œ|Œ#', 'oe', $url);
 
     return $url;
+}
+
+function majuscule($nom)
+{
+    $nom = explode('-', $nom);
+
+    for ($i=0; $i < count($nom); $i++) {
+        $nom[$i] = convertAccent(mb_substr($nom[$i], 0, 1)).mb_substr($nom[$i], 1, null);
+        $nom[$i] = strtoupper(mb_substr($nom[$i], 0, 1)).mb_substr($nom[$i], 1, null);
+    }
+    $nom = implode('-', $nom);
+
+    return $nom;
 }
 
 function verifAndConvert($nom, $type = false) //true = prenom, false == nom de famille
 {
     if ($type) {
         if (verifAllPrenom($nom)==0) {
-            $nom = strtolower(convertAccent($nom));
-            $nom[0] = strtoupper($nom[0]);
+            $nom = strtolower($nom);
+            $nom = majuscule($nom);
+
             return $nom;
         }
     } else {
@@ -91,7 +112,7 @@ function verifAndConvert($nom, $type = false) //true = prenom, false == nom de f
     }
     return 1;
 }
-
+echo verifAndConvert("é", true);
 function verifAndConvertAll($nom, $prenom, $localite)
 {
     $tab = array();
