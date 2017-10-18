@@ -76,6 +76,7 @@ if (!empty($_POST )) {
     }
 
     if ($erreur == false) {
+
         include ('verifNom.php');
 
         $nom = verifAndConvert($nom);
@@ -83,10 +84,23 @@ if (!empty($_POST )) {
         $localite = verifAndConvert($localite);
 
         if ($nom != 1 && $prenom != 1 && $localite != 1 && verifChiffre($ca) == 0) {
-            ajoutClient($nom, $prenom, $pays, $localite, $type, $ca);
+            $req = "select cl_numero from cdi_client where cl_nom = '$nom' and cl_prenom='$prenom' and cl_localite = '$localite'";
+            $cur = PreparerRequete($conn, $req);
+            ExecuterRequete($cur);
+            $nbLignes;
+            $tab;
+            $nbLignes = LireDonnees2($cur,$tab);
+            if($nbLignes == 0){
+              ajoutClient($nom, $prenom, $pays, $localite, $type, $ca);
+              include ("formclient.htm");
+              echo '<script>Entrée dans la base réussie</script>';
+            }
+            else{
+              include ("formclient.htm");
+              echo '<script>alert("Client déjà présent")</script>';
+            }
             //FermerConnexion($conn);
-            include ("formclient.htm");
-            echo '<script>Entrée dans la base réussie</script>';
+
         } else {
             //FermerConnexion($conn);
             $erreur = true;

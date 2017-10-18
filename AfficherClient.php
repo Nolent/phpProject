@@ -8,13 +8,17 @@
     <script	src="./javascript/javascript.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.29.0/js/jquery.tablesorter.js"> </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
 
     <?php
-    include 'accesTable.php';
+    include 'fonc_oracle.php';
 
-    $conn = connect();
+    $login = 'ETU2_53';
+    $mdp = 'ETU2_53';
+    $instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
+    // ce code ne doit pas être dans le <select> … </select>
+    $conn = OuvrirConnexion($login, $mdp, $instance);
 
     $req = "select * from CDI_CLIENT";
     $cur = PreparerRequete($conn, $req);
