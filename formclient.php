@@ -77,26 +77,35 @@ if (!empty($_POST )) {
 
     if ($erreur == false) {
         include ('verifNom.php');
-        $tab = verifAndConvertAll($nom, $prenom, $localite);
 
-        if ($tab['nom'] != 1 && $tab['prenom'] != 1 && $tab['localite'] != 1) {
-            if (is_null($ca)) {
-                ajoutClient($tab['nom'], $tab['prenom'], $pays, $tab['localite'], $type, $ca);
-            } elseif (verifChiffre($CA) == 0) {
-                ajoutClient($tab['nom'], $tab['prenom'], $pays, $tab['localite'], $type, $ca);
-            } else {
-                $erreur = true;
-            }
+        $nom = verifAndConvert($nom);
+        $prenom = verifAndConvert($prenom, true);
+        $localite = verifAndConvert($localite);
+
+        if ($nom != 1 && $prenom != 1 && $localite != 1 && verifChiffre($ca) == 0) {
+          $req = "select cl_numero from cdi_client where cl_nom = '$nom' and cl_prenom='$prenom' and cl_localite = '$localite'";
+          $cur = PreparerRequete($conn, $req);
+          ExecuterRequete($cur);
+          $nbLignes;
+          $tab;
+          $nbLignes = LireDonnees2($cur,$tab);
+          if($nbLignes == 0){
+            ajoutClient($nom, $prenom, $pays, $localite, $type, $ca);
             include ("formclient.htm");
-            echo '<script>Entrée dans la base réussie</script>';
+            echo '<script>alert(Entrée dans la base réussie)</script>';
+          }
+          else{
+            include ("formclient.htm");
+            echo '<script>alert("Client déjà présent")</script>';
+          }
         } else {
             //FermerConnexion($conn);
             $erreur = true;
-            if ($tab['nom'] == 1) {
+            if ($nom == 1) {
                 echo '<script>alert("Charactere interdit dans nom")</script>';
-            } elseif ($tab['prenom'] == 1) {
+            } elseif ($prenom == 1) {
                 echo '<script>alert("Charactere interdit dans prenom")</script>';
-            } elseif ($tab['localite'] == 1) {
+            } elseif ($localite != 1) {
                 echo '<script>alert("Charactere interdit dans ville")</script>';
             } else {
                 echo '<script>alert("Il ne peut y avoir que des nombres dans CA")</script>';
