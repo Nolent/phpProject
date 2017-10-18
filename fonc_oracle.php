@@ -138,8 +138,14 @@ function AfficherTab($tab)
     print_r($tab);
 }
 //---------------------------------------------------------------------------------------------
-function CompterNbLigne($cur)
+function LireCle($tab, $nbLignes)
 {
-    return oci_num_rows($cur);
+  if ($nbLignes == 1) {
+      foreach ($tab as $data) {
+        return $data;
+      }
+  } else {
+      echo "nbLignes incorrect :".$nbLignes;
+  }
 }
 ?>
