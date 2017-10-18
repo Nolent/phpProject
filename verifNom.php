@@ -25,10 +25,16 @@ function verifTiretPrenom($nom)
     }return 1;
 }
 
-function verifApostrophe($nom)
+function verifApostropheDouble($nom)
 {
     $motif = '/\'\'/';
     return preg_match($motif, $nom);
+}
+
+function ajoutApostrophe($nom)
+{
+    $nom = preg_replace('#\'#', '\'\'', $nom);
+    return $nom;
 }
 
 function verifEspace($nom)
@@ -47,7 +53,7 @@ function verifLettres($nom)
 
 function verifAllNom($nom)
 {
-    if (verifLettres($nom) == 0 && verifEspace($nom)==0 && verifTiretNom($nom)==0 && verifApostrophe($nom)==0) {
+    if (verifLettres($nom) == 0 && verifEspace($nom)==0 && verifTiretNom($nom)==0 && verifApostropheDouble($nom)==0) {
         return 0;
     }
     return 1;
@@ -102,15 +108,26 @@ function verifAndConvert($nom, $type = false) //true = prenom, false == nom de f
         if (verifAllPrenom($nom)==0 && count($nom) < 25) {
             $nom = strtolower($nom);
             $nom = majuscule($nom);
-
+            $nom = ajoutApostrophe($nom);
             return $nom;
         }
     } else {
         if (verifAllNom($nom)==0 && count($nom) < 25) {
-            return strtoupper(convertAccent($nom));
+            $nom = strtoupper(convertAccent($nom));
+            return ajoutApostrophe($nom);
         }
     }
     return 1;
+}
+
+function verifAndConvertVille($nom)
+{
+    if (verifAllPrenom($nom) == 0) {
+        $nom = verifAndConvert($nom);
+        if ($nom != 1) {
+            return $nom;
+        }
+    } return 1;
 }
 
 function verifAndConvertAll($nom, $prenom, $localite)
@@ -119,16 +136,17 @@ function verifAndConvertAll($nom, $prenom, $localite)
 
     $tab['nom'] = verifAndConvert($nom);
     $tab['prenom'] = verifAndConvert($prenom, true);
-    $tab['localite'] = verifAndConvert($localite, true);
+    $tab['localite'] = verifAndConvertVille($localite);
 
     return $tab;
 }
+print_r (verifAndConvertAll('ééé', 'ééé', 'ééé'));
 
 function verifChiffre($value)
 {
     $motif = '/[^0-9]/';
 
-    if (preg_match($motif, $value) != 0 || (intval($value)>=99999 || intval($value)<0 )) {
+    if (preg_match($motif, $value) != 0 || (intval($value)>=99999 || intval($value)<0)) {
         return 1;
     }
     return 0;
