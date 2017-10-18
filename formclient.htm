@@ -9,15 +9,15 @@
 <body>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col">
+      <div class="col-sm-4">
         <form name="monFormulaire" action= "" method="post" enctype="multipart/form-data">
           <fieldset>
             <legend><b>Identité</b></legend>
             <br />
-            <label for="nom">Nom : </label><input type="text" name="nom" size="30" maxlength="50" placeholder="nom ?"></input><br />
-            <label for="prenom">Prénom : </label><input type="text" name="prenom" size="30" maxlength="50" placeholder="prénom ?"></input><br />
+            <label for="nom">Nom : </label><input type="text" name="nom" size="30" maxlength="50" placeholder="nom"></input><br />
+            <label for="prenom">Prénom : </label><input type="text" name="prenom" size="30" maxlength="50" placeholder="prénom"></input><br />
             <br/>
             <legend><b>Type de compte</b></legend>
             <select name="type" size="1">
@@ -36,7 +36,7 @@
                 ListePays();
                 ?>
               </select><br><br/>
-              <label for="ville">Ville : </label><input type="text" name="localite"></input><br />
+              <label for="ville">Ville : </label><input type="text" name="localite" placeholder="ville"></input><br />
             </fieldset>
             <br />
             <fieldset>
@@ -49,7 +49,7 @@
         </form>
       </div>
 
-      <div class="col">
+      <div class="col-sm-8">
         <iframe src="AfficherClient.php" width="70%" height="50%"></iframe>
       </div>
     </div>
