@@ -120,13 +120,25 @@ function verifAndConvert($nom, $type = false) //true = prenom, false == nom de f
     return 1;
 }
 
+function verifAndConvertVille($nom)
+{
+    if (verifAllPrenom($nom) == 0) {
+        $nom = verifAndConvert($nom);
+        echo "$nom";
+        if ($nom != 0) {
+            echo "$nom";
+            return $nom;
+        }
+    } return 1;
+}
+echo verifAndConvertVille('double--de');
 function verifAndConvertAll($nom, $prenom, $localite)
 {
     $tab = array();
 
     $tab['nom'] = verifAndConvert($nom);
     $tab['prenom'] = verifAndConvert($prenom, true);
-    $tab['localite'] = verifAndConvert($localite, true);
+    $tab['localite'] = verifAndConvertVille($localite);
 
     return $tab;
 }

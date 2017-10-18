@@ -77,14 +77,10 @@ if (!empty($_POST )) {
 
     if ($erreur == false) {
         include ('verifNom.php');
+        $tab = verifAndConvertAll($nom, $prenom, $localite);
 
-        $nom = verifAndConvert($nom);
-        $prenom = verifAndConvert($prenom, true);
-        $localite = verifAndConvert($localite);
-
-        if ($nom != 1 && $prenom != 1 && $localite != 1 && verifChiffre($ca) == 0) {
-            ajoutClient($nom, $prenom, $pays, $localite, $type, $ca);
-            //FermerConnexion($conn);
+        if ($tab['nom'] != 1 && $tab['prenom'] != 1 && $tab['localite'] != 1 && verifChiffre($ca) == 0) {
+            ajoutClient($tab['nom'], $tab['prenom'], $pays, $tab['localite'], $type, $ca);
             include ("formclient.htm");
             echo '<script>Entrée dans la base réussie</script>';
         } else {

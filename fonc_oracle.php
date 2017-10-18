@@ -98,14 +98,18 @@ function AfficherDonnee1($tab, $nbLignes)
         echo '<table border=\"1\" id="client" class="tablesorter">';
         echo '<thead> <tr class ="tablesorter-headerRow">';
         foreach ($tab as $key => $val) {  // lecture des noms de colonnes
-            echo "<th>$key</th>\n";
+            if ($key != 'CL_NUMERO') {
+                echo "<th>$key</th>\n";
+            }
         }
         echo "</tr> </thead> \n";
         echo '<tbody>';
         for ($i = 0; $i < $nbLignes; $i++) { // balayage de toutes les lignes
             echo "<tr>\n";
-            foreach ($tab as $data) { // lecture des enregistrements de chaque colonne
-                echo "<td>$data[$i]</td>\n";
+            foreach ($tab as $key => $data) { // lecture des enregistrements de chaque colonne
+                if ($key != 'CL_NUMERO') {
+                    echo "<td>$data[$i]</td>\n";
+                }
             }
             echo "</tr>\n";
         }
