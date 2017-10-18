@@ -124,14 +124,12 @@ function verifAndConvertVille($nom)
 {
     if (verifAllPrenom($nom) == 0) {
         $nom = verifAndConvert($nom);
-        echo "$nom";
-        if ($nom != 0) {
-            echo "$nom";
+        if ($nom != 1) {
             return $nom;
         }
     } return 1;
 }
-echo verifAndConvertVille('double--de');
+
 function verifAndConvertAll($nom, $prenom, $localite)
 {
     $tab = array();
@@ -142,12 +140,13 @@ function verifAndConvertAll($nom, $prenom, $localite)
 
     return $tab;
 }
+print_r (verifAndConvertAll('ééé', 'ééé', 'ééé'));
 
 function verifChiffre($value)
 {
     $motif = '/[^0-9]/';
 
-    if (preg_match($motif, $value) != 0 || (intval($value)>=99999 || intval($value)<0 )) {
+    if (preg_match($motif, $value) != 0 || (intval($value)>=99999 || intval($value)<0)) {
         return 1;
     }
     return 0;
