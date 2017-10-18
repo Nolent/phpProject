@@ -17,7 +17,7 @@
 
     $conn = connect();
 
-    $req = "select * from CDI_CLIENT order by cl_numero";
+    $req = "select * from CDI_CLIENT order by cl_nom";
     $cur = PreparerRequete($conn, $req);
     ExecuterRequete($cur);
     $tab;
