@@ -3,6 +3,10 @@
 <!-- maison : http://localhost:8082/support_php/prof/e95.php -->
 
 <?php
+include ('accesTable.php');
+$conn = connect();
+
+
 function remplirOption($tab, $nbLignes)
 {
     for ($i=0; $i<$nbLignes; $i++) {
@@ -17,17 +21,15 @@ function remplirOption($tab, $nbLignes)
 }
 function ListePays()
 {
-    include ("fonc_oracle.php");
     $login = 'ETU2_53';
     $mdp = 'ETU2_53';
     $instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
     // ce code ne doit pas être dans le <select> … </select>
-    $conn = OuvrirConnexion($login, $mdp, $instance);
+    global $conn;
     $req = 'SELECT * FROM CDI_PAYS order by nom';
     $cur = PreparerRequete($conn, $req);
     $res = ExecuterRequete($cur);
     $nbLignes = LireDonnees1($cur, $tab); // Attention, pas &$tab
-    FermerConnexion($conn);
     if (!empty($_POST)) {
         if (isset($_POST['pays'])) {
             $cour = $_POST['pays'];
@@ -81,13 +83,12 @@ if (!empty($_POST )) {
         $localite = verifAndConvert($localite);
 
         if ($nom != 1 && $prenom != 1 && $localite != 1 && verifChiffre($ca) == 0) {
-            include ('accesTable.php');
             ajoutClient($nom, $prenom, $pays, $localite, $type, $ca);
-            FermerConnexion($conn);
-
+            //FermerConnexion($conn);
             include ("formclient.htm");
             echo '<script>Entrée dans la base réussie</script>';
         } else {
+            //FermerConnexion($conn);
             $erreur = true;
             if ($nom == 1) {
                 echo '<script>alert("Charactere interdit dans nom")</script>';

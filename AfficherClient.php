@@ -12,13 +12,9 @@
 
 
     <?php
-    include 'fonc_oracle.php';
+    include 'accesTable.php';
 
-    $login = 'ETU2_53';
-    $mdp = 'ETU2_53';
-    $instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
-    // ce code ne doit pas être dans le <select> … </select>
-    $conn = OuvrirConnexion($login, $mdp, $instance);
+    $conn = connect();
 
     $req = "select * from CDI_CLIENT";
     $cur = PreparerRequete($conn, $req);
