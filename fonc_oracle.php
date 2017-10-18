@@ -95,8 +95,8 @@ function LireDonnees3($cur, &$tab)
 function AfficherDonnee1($tab, $nbLignes)
 {
     if ($nbLignes > 0) {
-        echo '<table border=\"1\" id="client" class="tablesorter">';
-        echo '<thead> <tr class ="tablesorter-headerRow">';
+        echo '<table border=\"1\" id="client" class="table table-hover">';
+        echo '<thead> <tr class ="">';
         foreach ($tab as $key => $val) {  // lecture des noms de colonnes
             echo "<th>$key</th>\n";
         }
@@ -138,8 +138,14 @@ function AfficherTab($tab)
     print_r($tab);
 }
 //---------------------------------------------------------------------------------------------
-function CompterNbLigne($cur)
+function LireCle($tab, $nbLignes)
 {
-    return oci_num_rows($cur);
+  if ($nbLignes == 1) {
+      foreach ($tab as $data) {
+        return $data;
+      }
+  } else {
+      echo "nbLignes incorrect :".$nbLignes;
+  }
 }
 ?>
