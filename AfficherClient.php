@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Affichage client</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
     <script	src="./javascript/javascript.js"></script>
@@ -20,7 +21,7 @@
     // ce code ne doit pas être dans le <select> … </select>
     $conn = OuvrirConnexion($login, $mdp, $instance);
 
-    $req = "select * from CDI_CLIENT";
+    $req = "select * from CDI_CLIENT order by cl_numero";
     $cur = PreparerRequete($conn, $req);
     ExecuterRequete($cur);
     $tab;
