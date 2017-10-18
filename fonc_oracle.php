@@ -17,6 +17,7 @@ function OuvrirConnexion($session, $mdp, $instance)
     }
     return $conn;
 }
+
 //---------------------------------------------------------------------------------------------
 function OuvrirConnexion2($session, $mdp, $instance)
 {
