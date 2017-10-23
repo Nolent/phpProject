@@ -40,3 +40,15 @@
 		var ca = field[0];
 		ca.disabled = false;
 	}
+
+	function nom(){
+		var field = document.getElementsByName("nom");
+		var ca = field[0];
+		ca.disabled = true;
+		ca.value = "";
+	}
+	function autreQueNom(){
+		var field = document.getElementsByName("CA");
+		var ca = field[0];
+		ca.disabled = false;
+	}
