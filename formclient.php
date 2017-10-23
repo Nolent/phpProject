@@ -1,4 +1,4 @@
-file<!--  E.Porcq	e95.php 20/09/2010 -->
+<!--  E.Porcq	e95.php 20/09/2010 -->
 
 <!-- maison : http://localhost:8082/support_php/prof/e95.php -->
 
@@ -21,9 +21,9 @@ function remplirOption($tab, $nbLignes)
 }
 function ListePays()
 {
-    $login = 'ETU2_53';
-    $mdp = 'ETU2_53';
-    $instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
+    //$login = 'ETU2_53';
+    //$mdp = 'ETU2_53';
+    //$instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
     // ce code ne doit pas être dans le <select> … </select>
     global $conn;
     $req = 'SELECT * FROM CDI_PAYS order by nom';
