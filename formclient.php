@@ -1,4 +1,4 @@
-<!--  E.Porcq	e95.php 20/09/2010 -->
+file<!--  E.Porcq	e95.php 20/09/2010 -->
 
 <!-- maison : http://localhost:8082/support_php/prof/e95.php -->
 
