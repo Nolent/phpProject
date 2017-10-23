@@ -130,17 +130,6 @@ function verifAndConvertVille($nom)
     } return 1;
 }
 
-function verifAndConvertAll($nom, $prenom, $localite)
-{
-    $tab = array();
-
-    $tab['nom'] = verifAndConvert($nom);
-    $tab['prenom'] = verifAndConvert($prenom, true);
-    $tab['localite'] = verifAndConvertVille($localite);
-
-    return $tab;
-}
-
 function verifChiffre($value)
 {
     $motif = '/[^0-9]/';
