@@ -40,8 +40,3 @@
 		var ca = field[0];
 		ca.disabled = false;
 	}
-
-	function parseRow(row) {
-		var ligne = document.getElementById('client').rows[row];
-		
-	}
