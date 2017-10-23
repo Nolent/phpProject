@@ -7,10 +7,30 @@
   <script	src="./javascript/javascript.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<header>
+	<nav class="navbar navbar-inverse" style="position:absolute; top:0px; width:100%;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Projet php</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+          <li><a href="index.php">Accueil</a></li>
+          <li class="active"><a href="formclient.php">Nouveau Client</a></li>
+          <li><a href="modifClient.php">Modification Client</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
 <body>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <h1>Ajouter un client</h1></br>
-  <div class="container-fluid">
+  <div class="container-fluid" style="position: absolute; top: 5%; width: 100%;">
+    <h1>Ajouter un client</h1></br>
     <div class="row">
       <div class="col-sm-4">
         <form name="monFormulaire" action= "" method="post" enctype="multipart/form-data">
