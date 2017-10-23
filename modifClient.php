@@ -33,5 +33,3 @@ function ListeClient()
     }
     remplirOption($tab, $nbLignes);
 }
-
-?>
