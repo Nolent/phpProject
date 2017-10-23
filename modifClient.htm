@@ -3,26 +3,25 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Nouveau Client</title>
+  <title>Modification Client</title>
   <script	src="./javascript/javascript.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <h1>Ajouter un client</h1></br>
+  <h1>Modifier un client</h1></br>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-4">
         <form name="monFormulaire" action= "" method="post" enctype="multipart/form-data">
           <fieldset>
+
             <legend><b>Identité</b></legend>
             <br />
             <label for="nom"> Nom :  </label><input type="text" name="nom" size="30" maxlength="50"></input><br />
-            <input type="checkbox" id="checkPrenom" name="check" onclick="disPrenom()" checked="false"></input>
             <label for="prenom"> Prénom :  </label><input type="text" name="prenom" size="30" maxlength="50"></input><br />
             <br/>
             <legend><b>Type de compte</b></legend>
-            <input type="checkbox" id="checkType" name="check" onclick="disType()" checked="false"></input>
             <select name="type" size="1">
               <option value="PME" onclick="autreQuePart()"> PME </option>
               <option value="GrandCompte" onclick="autreQuePart()"> Grand compte </option>
@@ -34,7 +33,6 @@
             </br>
             <fieldset>
               <legend><b>Localité</b></legend><br/>
-              <input type="checkbox" id="checkPays" name="check" onclick="disPays()" checked="false"></input>
               <select name="pays" size="1">
                 <?php
                 ListePays();
@@ -52,6 +50,11 @@
           </fieldset>
         </form>
       </div>
+        <div class="col-sm-8">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="ListeModifClient.php" width="70%" height="80%"></iframe>
+          </div>
+        </div>
     </div>
   </div>
 

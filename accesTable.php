@@ -44,7 +44,7 @@ function updateClient($num, $nom, $prenom, $pays, $localite, $type, $ca)
     $tab;
     $nbLigne = LireDonnees2($cur, $tab);
     $nbClient = LireCle($tab, $nbLigne);
-    $req = "update CL_CLIENT set cl_nom = $nom, cl_prenom = $prenom, ";
+    $req = "update CL_CLIENT set cl_nom = $nom, cl_prenom = $prenom, cl_pays = $pays, cl_localite = $localite, cl_type = $type, cl_ca = $ca";
     $cur = PreparerRequete($conn, $req);
     ExecuterRequete($cur);
     $req = "commit";
