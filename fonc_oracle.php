@@ -119,6 +119,35 @@ function AfficherDonnee1($tab, $nbLignes)
     }
     echo "$nbLignes Lignes lues<br />\n";
 }
+function AfficherDonneeModif($tab, $nbLignes)
+{
+    if ($nbLignes > 0) {
+        echo '<table border=\"1\" id="client" class="table table-hover">';
+        echo '<thead> <tr class ="">';
+        foreach ($tab as $key => $val) {  // lecture des noms de colonnes
+            if ($key != 'CL_NUMERO') {
+                echo "<th>$key</th>\n";
+            }
+        }
+        echo "<th>Modifier</th>";
+        echo "</tr> </thead> \n";
+        echo '<tbody>';
+        for ($i = 0; $i < $nbLignes; $i++) { // balayage de toutes les lignes
+            echo "<tr>\n";
+            foreach ($tab as $key => $data) { // lecture des enregistrements de chaque colonne
+                if ($key != 'CL_NUMERO') {
+                    echo "<td>$data[$i]</td>\n";
+                }
+            }
+            echo "<td><input type=\"button\" value=\"Modifier\"/></td>";
+            echo "</tr>\n";
+        }
+        echo "</tbody> </table>\n";
+    } else {
+        echo "Pas de ligne<br />\n";
+    }
+    echo "$nbLignes Lignes lues<br />\n";
+}
 //---------------------------------------------------------------------------------------------
 function AfficherDonnee2($tab)
 {
