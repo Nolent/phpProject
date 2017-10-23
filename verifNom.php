@@ -140,7 +140,6 @@ function verifAndConvertAll($nom, $prenom, $localite)
 
     return $tab;
 }
-print_r (verifAndConvertAll('ééé', 'ééé', 'ééé'));
 
 function verifChiffre($value)
 {
