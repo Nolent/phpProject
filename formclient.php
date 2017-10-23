@@ -77,6 +77,7 @@ if (!empty($_POST )) {
 
     if ($erreur == false) {
         include ('verifNom.php');
+        $tab = verifAndConvertAll($nom, $prenom, $localite);
 
         $nom = verifAndConvert($nom);
         $prenom = verifAndConvert($prenom, true);
@@ -100,9 +101,9 @@ if (!empty($_POST )) {
             }
         } else {
             $erreur = true;
-            if ($nom == 1) {
+            if ($tab['nom'] == 1) {
                 echo '<script>alert("Charactere interdit dans nom")</script>';
-            } elseif ($prenom == 1) {
+            } elseif ($tab['prenom'] == 1) {
                 echo '<script>alert("Charactere interdit dans prenom")</script>';
             } elseif ($localite == 1) {
                 echo '<script>alert("Charactere interdit dans ville")</script>';

@@ -20,6 +20,9 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
+          <li class="active"><a href="index.php">Accueil</a></li>
+          <li><a href="formclient.php">Nouveau Client</a></li>
+          <li><a href="#">Modification Client</a></li>
 				</ul>
 			</div>
 		</div>
