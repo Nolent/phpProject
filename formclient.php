@@ -4,40 +4,8 @@
 
 <?php
 include ('accesTable.php');
+include ('utils.php');
 $conn = connect();
-
-
-function remplirOption($tab, $nbLignes)
-{
-    for ($i=0; $i<$nbLignes; $i++) {
-        $tab[$i]["NOM"] = utf8_encode($tab[$i]["NOM"]);
-        if ($tab[$i]['NOM']=="FRANCE") {
-            echo '<option value='.$tab[$i]['NOM'].' selected >'.$tab[$i]['NOM'];
-        } else {
-            echo '<option value='.$tab[$i]['NOM'].'>'.$tab[$i]['NOM'];
-        }
-        echo '</option>';
-    }
-}
-function ListePays()
-{
-    //$login = 'ETU2_53';
-    //$mdp = 'ETU2_53';
-    //$instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
-    // ce code ne doit pas être dans le <select> … </select>
-    global $conn;
-    $req = 'SELECT * FROM CDI_PAYS order by nom';
-    $cur = PreparerRequete($conn, $req);
-    $res = ExecuterRequete($cur);
-    $nbLignes = LireDonnees1($cur, $tab); // Attention, pas &$tab
-    if (!empty($_POST)) {
-        if (isset($_POST['pays'])) {
-            $cour = $_POST['pays'];
-            echo ("Pays $cour sélectionné");
-        }
-    }
-    remplirOption($tab, $nbLignes);
-}
 $erreur = true;
 if (!empty($_POST )) {
 //if ( isset ($_POST["nom"]) && isset($_POST["prenom"]) )
@@ -114,7 +82,6 @@ if (!empty($_POST )) {
     }
 }
 if ($erreur == true) {
-    include ("utils.php");
     include ("formclient.htm");
 } else {
 }
