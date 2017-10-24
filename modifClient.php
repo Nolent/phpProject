@@ -4,58 +4,26 @@
 
 <?php
 include ('accesTable.php');
+include ('utils.php');
 $conn = connect();
-
-
-function remplirOption($tab, $nbLignes)
-{
-    for ($i=0; $i<$nbLignes; $i++) {
-        $tab[$i]["NOM"] = utf8_encode($tab[$i]["NOM"]);
-        if ($tab[$i]['NOM']=="FRANCE") {
-            echo '<option value='.$tab[$i]['NOM'].' selected >'.$tab[$i]['NOM'];
-        } else {
-            echo '<option value='.$tab[$i]['NOM'].'>'.$tab[$i]['NOM'];
-        }
-        echo '</option>';
-    }
-}
-function ListePays()
-{
-    //$login = 'ETU2_53';
-    //$mdp = 'ETU2_53';
-    //$instance = 'spartacus.iutc3.unicaen.fr:1521/info.iutc3.unicaen.fr';
-    // ce code ne doit pas être dans le <select> … </select>
-    global $conn;
-    $req = 'SELECT * FROM CDI_PAYS order by nom';
-    $cur = PreparerRequete($conn, $req);
-    $res = ExecuterRequete($cur);
-    $nbLignes = LireDonnees1($cur, $tab); // Attention, pas &$tab
-    if (!empty($_POST)) {
-        if (isset($_POST['pays'])) {
-            $cour = $_POST['pays'];
-            echo ("Pays $cour sélectionné");
-        }
-    }
-    remplirOption($tab, $nbLignes);
-}
 $erreur = true;
 if (!empty($_POST )) {
 //if ( isset ($_POST["nom"]) && isset($_POST["prenom"]) )
     $erreur = false;
-    if (!empty($_POST['nom']) && $_POST['nom'] != "nom ?") {
-        $nom = $_POST['nom'];
+    if (!empty($_POST['nom'])) {
+        $nom = verifAndConvert($_POST['nom']);
     } else {
-        $erreur = true;
+        $nom = '';
     }
-    if (!empty($_POST['prenom']) && $_POST['prenom'] != "prenom") {
-        $prenom = $_POST['prenom'] ;
+    if (!empty($_POST['prenom'])) {
+        $prenom = verifAndConvert($_POST['prenom'], true);
     } else {
-        $erreur = true;
+        $prenom = '';
     }
-    if (!empty($_POST['localite']) && $_POST['localite'] != "ville") {
-        $localite = $_POST['localite'] ;
+    if (!empty($_POST['localite'])) {
+        $localite = verifAndConvertVille($_POST['localite']);
     } else {
-        $erreur = true;
+        $localite = '';
     }
     if (isset($_POST['type'])) {
         $type = $_POST['type'];
@@ -74,6 +42,48 @@ if (!empty($_POST )) {
     } else {
         $erreur = true;
     }
+    if (!empty($_POST['cl_num'])) {
+        $cl_num = $_POST['cl_num'];
+    } else {
+        $erreur = true;
+    }
+
+    if ($erreur == false) {
+        include ('verifNom.php');
+
+        if ($nom != 1 && $prenom != 1 && $localite != 1 && verifChiffre($ca) == 0) {
+            $req = "select cl_numero from cdi_client where cl_numero = $cl_num";
+            $cur = PreparerRequete($conn, $req);
+            ExecuterRequete($cur);
+            $tab;
+            $nbLignes = LireDonnees2($cur, $tab);
+            if ($nbLignes == 0) {
+                updateClient($nom, $prenom, $pays, $localite, $type, $ca);
+                include ("formclient.htm");
+                echo '<script>alert(Entrée dans la base réussie)</script>';
+            } else {
+                include ("formclient.htm");
+                echo '<script>alert("Client déjà présent")</script>';
+            }
+        } else {
+            $erreur = true;
+            if ($tab['nom'] == 1) {
+                echo '<script>alert("Charactere interdit dans nom")</script>';
+            } elseif ($tab['prenom'] == 1) {
+                echo '<script>alert("Charactere interdit dans prenom")</script>';
+            } elseif ($localite == 1) {
+                echo '<script>alert("Charactere interdit dans ville")</script>';
+            } else {
+                echo '<script>alert("Il ne peut y avoir que des nombres dans CA")</script>';
+            }
+        }
+    }
+}
+if ($erreur == true) {
+    include ("formclient.htm");
+} else {
+}
+?>
 
     if ($erreur == false) {
         include ('verifNom.php');
