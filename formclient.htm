@@ -37,18 +37,18 @@
           <fieldset>
             <legend><b>Identité</b></legend>
             <br />
-            <label for="nom">Nom : </label><input type="text" name="nom" size="30" maxlength="50" placeholder="nom"></input><br />
-            <label for="prenom">Prénom : </label><input type="text" name="prenom" size="30" maxlength="50" placeholder="prénom"></input><br />
+            <label for="nom">Nom : </label><input type="text" name="nom" size="30" maxlength="50" value="<?php if (isset($_POST['nom'])){echo $_POST['nom'];} ?>" placeholder="nom"></input><br />
+            <label for="prenom">Prénom : </label><input type="text" name="prenom" size="30" maxlength="50" value="<?php if (isset($_POST['prenom'])){echo $_POST['prenom'];} ?>" placeholder="prénom"></input><br />
             <br/>
             <legend><b>Type de compte</b></legend>
-            <select name="type" size="1">
+            <select name="type" size="1" >
               <option value="PME" onclick="autreQuePart()"> PME </option>
               <option value="GrandCompte" onclick="autreQuePart()"> Grand compte </option>
               <option value="Administration" onclick="autreQuePart()"> Administration </option>
               <option value="Particulier" onclick="particulier()" selected> Particulier </option>
             </select>
             </br><br/>
-            <label for="CA">Chiffre d'affaire : </label><input type="text" name ="CA" size="30" maxlength="50" disabled></input><br/>
+            <label for="CA">Chiffre d'affaire : </label><input type="text" name ="CA" size="30" maxlength="50" value="<?php if (isset($_POST['CA'])){echo $_POST['CA'];} ?>" disabled></input><br/>
             </br>
             <fieldset>
               <legend><b>Localité</b></legend><br/>
@@ -57,7 +57,7 @@
                 ListePays();
                 ?>
               </select><br><br/>
-              <label for="ville">Ville : </label><input type="text" name="localite" placeholder="ville"></input><br />
+              <label for="ville">Ville : </label><input type="text" name="localite" placeholder="ville" value="<?php if (isset($_POST['localite'])){echo $_POST['localite'];} ?>"></input><br />
             </fieldset>
             <br />
             <fieldset>
