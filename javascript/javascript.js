@@ -35,6 +35,7 @@
 		ca.disabled = true;
 		ca.value = "";
 	}
+
 	function autreQuePart(){
 		var field = document.getElementsByName("CA");
 		var ca = field[0];
@@ -42,11 +43,32 @@
 	}
 
 	function parseRow(row) {
+		console.log("debut parse");
 		var ligne = document.getElementById('client').rows[row];
-		document.getElementsByName('nomBase').value = ligne.cells[0].innerHTML;
-		document.getElementsByName('prenomBase').value = ligne.cells[1].innerHTML;
-		document.getElementsByName('localiteBase').value = ligne.cells[3].innerHTML;
-		document.getElementsByName('nom').value = ligne.cells[0].innerHTML;
-		document.getElementsByName('prenom').value = ligne.cells[1].innerHTML;
-		document.getElementsByName('localite').value = ligne.cells[3].innerHTML;
+		var selPays = document.getElementsByName('pays');
+		var selType = document.getElementsByName('type');
+		for (var i = 0; i < selPays[0].length; i++) {
+			if (selPays[0][i].value == ligne.cells[2].innerHTML) {
+				selPays[0][i].selected = true;
+			}
+		}
+		for (var i = 0; i < selType[0].length; i++) {
+			if (selType[0][i].value == ligne.cells[5].innerHTML) {
+				selType[0][i].selected = true;
+			}
+		}
+		if (ligne.cells[5].innerHTML == "Particulier") {
+			particulier();
+			document.getElementsByName('CA')[0].value = "";
+		}
+		else {
+			autreQuePart();
+			document.getElementsByName('CA')[0].value = ligne.cells[4].innerHTML;
+		}
+		document.getElementsByName('nomBase')[0].value = ligne.cells[0].innerHTML;
+		document.getElementsByName('prenomBase')[0].value = ligne.cells[1].innerHTML;
+		document.getElementsByName('localiteBase')[0].value = ligne.cells[3].innerHTML;
+		document.getElementsByName('nom')[0].value = ligne.cells[0].innerHTML;
+		document.getElementsByName('prenom')[0].value = ligne.cells[1].innerHTML;
+		document.getElementsByName('localite')[0].value = ligne.cells[3].innerHTML;
 	}

@@ -9,20 +9,20 @@
 </head>
 <body>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <h1>Modifier un client</h1></br>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-4" style="position:fixed;">
+        <h1 id="h1">Modifier un client</h1></br>
         <form name="monFormulaire" action= "" method="post" enctype="multipart/form-data">
           <fieldset>
 
             <legend><b>Identité</b></legend>
             <br />
-            <input type="hidden" name="nomBase" value="">
-            <input type="hidden" name="prenomBase" value="">
-            <input type="hidden" name="localiteBase" value="">
-            <label for="nom"> Nom :  </label><input type="text" name="nom" size="30" maxlength="50" placeholder="nom"></input><br />
-            <label for="prenom"> Prénom :  </label><input type="text" name="prenom" size="30" maxlength="50" placeholder="prenom"></input><br />
+            <input type="hidden" name="nomBase" id="nomBase"value="">
+            <input type="hidden" name="prenomBase" id="prenomBase" value="">
+            <input type="hidden" name="localiteBase" id="localiteBase" value="">
+            <label for="nom"> Nom :  </label><input type="text" name="nom" id="nom" size="30" maxlength="50" placeholder="nom"></input><br />
+            <label for="prenom"> Prénom :  </label><input type="text" name="prenom" id="prenom" size="30" maxlength="50" placeholder="prenom"></input><br />
             <br/>
             <legend><b>Type de compte</b></legend>
             <select name="type" size="1">
@@ -36,12 +36,12 @@
             </br>
             <fieldset>
               <legend><b>Localité</b></legend><br/>
-              <select name="pays" size="1">
+              <select name="pays" id="pays" size="1">
                 <?php
                 ListePays();
                 ?>
               </select><br><br/>
-              <label for="ville">Ville : </label><input type="text" name="localite" placeholder="ville"></input><br />
+              <label for="ville">Ville : </label><input type="text" name="localite" id="localite" placeholder="ville"></input><br />
             </fieldset>
             <br />
             <fieldset>
@@ -53,10 +53,23 @@
           </fieldset>
         </form>
       </div>
-        <div class="col-sm-8">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="ListeModifClient.php" width="70%" height="80%"></iframe>
-          </div>
+        <div class="col-sm-8" style="position:absolute; width:60%; right:5px;">
+          <?php
+            global $conn;
+
+            $req = "select * from CDI_CLIENT order by cl_nom";
+            $cur = PreparerRequete($conn, $req);
+            ExecuterRequete($cur);
+            $tab;
+            $nbLigne = LireDonnees2($cur, $tab);
+            AfficherDonneeModif($tab, $nbLigne);
+            ?>
+
+            <script type="text/javascript">
+              $(function(){
+                $("#client").tablesorter();
+              });
+            </script>
         </div>
     </div>
   </div>
