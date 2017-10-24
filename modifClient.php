@@ -94,7 +94,7 @@ if (!empty($_POST )) {
             if ($nbLignes == 0) {
                 updateClient($nom, $prenom, $pays, $localite, $type, $ca);
                 include ("modifClient.htm");
-                echo '<script>alert(Entrée dans la base réussie)</script>';
+                echo '<script>alert("Modification réussie")</script>';
             } else {
                 include ("modifClient.htm");
                 echo '<script>alert("Client déjà présent")</script>';
