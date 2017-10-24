@@ -18,8 +18,11 @@
 
             <legend><b>Identité</b></legend>
             <br />
-            <label for="nom"> Nom : <p></p></label><br />
-            <label for="prenom"> Prénom : <p></p></label><br />
+            <input type="hidden" name="nomBase" value="">
+            <input type="hidden" name="prenomBase" value="">
+            <input type="hidden" name="localiteBase" value="">
+            <label for="nom"> Nom :  </label><input type="text" name="nom" size="30" maxlength="50" placeholder="nom"></input><br />
+            <label for="prenom"> Prénom :  </label><input type="text" name="prenom" size="30" maxlength="50" placeholder="prenom"></input><br />
             <br/>
             <legend><b>Type de compte</b></legend>
             <select name="type" size="1">
