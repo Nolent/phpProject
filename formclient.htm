@@ -7,7 +7,7 @@
   <script	src="./javascript/javascript.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<header>
+<!--<header>
 	<nav class="navbar navbar-inverse" style="position:absolute; top:0px; width:100%;">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 	</nav>
-</header>
+</header>-->
 <body>
   <div class="container-fluid" style="position: absolute; top: 5%; width: 100%;">
     <h1>Ajouter un client</h1></br>
@@ -41,20 +41,24 @@
             <label for="prenom">Prénom : </label><input type="text" name="prenom" size="30" maxlength="50" value="<?php if (isset($_POST['prenom'])){echo $_POST['prenom'];} ?>" placeholder="prénom"></input><br />
             <br/>
             <legend><b>Type de compte</b></legend>
-            <select name="type" size="1" >
-              <option value="PME" onclick="autreQuePart()"> PME </option>
-              <option value="GrandCompte" onclick="autreQuePart()"> Grand compte </option>
-              <option value="Administration" onclick="autreQuePart()"> Administration </option>
-              <option value="Particulier" onclick="particulier()" selected> Particulier </option>
+            <select onchange="autreQuePart()" name="type" size="1" >
+              <?php
+                remplirType();
+              ?>
             </select>
             </br><br/>
-            <label for="CA">Chiffre d'affaire : </label><input type="text" name ="CA" size="30" maxlength="50" value="<?php if (isset($_POST['CA'])){echo $_POST['CA'];} ?>" disabled></input><br/>
+            <label for="CA">Chiffre d'affaire : </label><input type="text" name ="CA" size="30" maxlength="50" value="<?php if (isset($_POST['CA'])){echo $_POST['CA'];} ?>" ></input><br/>
             </br>
             <fieldset>
               <legend><b>Localité</b></legend><br/>
               <select name="pays" size="1">
                 <?php
-                ListePays();
+                  if (isset($_POST['pays'])){
+                    ListePays($_POST['pays']);
+                  }
+                  else{
+                    ListePays();
+                  }
                 ?>
               </select><br><br/>
               <label for="ville">Ville : </label><input type="text" name="localite" placeholder="ville" value="<?php if (isset($_POST['localite'])){echo $_POST['localite'];} ?>"></input><br />

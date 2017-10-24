@@ -28,18 +28,12 @@
 		img.src = input.value;
         img.style.display = "block";
 	}
-
-	function particulier(){
-		var field = document.getElementsByName("CA");
-		var ca = field[0];
-		ca.disabled = true;
-		ca.value = "";
-	}
 	function autreQuePart(){
-		var field = document.getElementsByName("CA");
-		var ca = field[0];
-		ca.disabled = false;
+		var field = document.monFormulaire.type.value;
+		if(field=="Particulier")document.monFormulaire.CA.disabled=true;
+		else document.monFormulaire.CA.disabled=false;
 	}
+	window.addEventListener("load",autreQuePart);
 
 	function parseRow(row) {
 		var ligne = document.getElementById('client').rows[row];

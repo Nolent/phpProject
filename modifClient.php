@@ -70,7 +70,7 @@ if (!empty($_POST )) {
             $erreur = true;
             if ($nom == 1) {
                 echo '<script>alert("Charactere interdit dans nom")</script>';
-            } elseif ($nom == 1) {
+            } elseif ($prenom == 1) {
                 echo '<script>alert("Charactere interdit dans prenom")</script>';
             } elseif ($localite == 1) {
                 echo '<script>alert("Charactere interdit dans ville")</script>';
