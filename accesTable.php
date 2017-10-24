@@ -16,7 +16,7 @@ function ajoutClient($nom, $prenom, $pays, $localite, $type, $ca)
 {
     global $conn;
     //select * from cdi_client;insert into cdi_client(cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cm_ca,cl_type) values (select concat("C",count(*)) as nbClient from cdi_client,"MICHEL","michel","F","PARIS",null,"Particulier");
-    $req = "select 'C'||to_char(max(to_number(substr(cl_numero,1)))+1) from cdi_client";
+    $req = "select 'C'||to_char(max(to_number(substr(cl_numero,2)))+1) from cdi_client";
     $cur = PreparerRequete($conn, $req);
     ExecuterRequete($cur);
     $tab;
