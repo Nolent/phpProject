@@ -40,13 +40,3 @@
 		var ca = field[0];
 		ca.disabled = false;
 	}
-
-	function parseRow(row) {
-		var ligne = document.getElementById('client').rows[row];
-		document.getElementsByName('nomBase').value = ligne.cells[0].innerHTML;
-		document.getElementsByName('prenomBase').value = ligne.cells[1].innerHTML;
-		document.getElementsByName('localiteBase').value = ligne.cells[3].innerHTML;
-		document.getElementsByName('nom').value = ligne.cells[0].innerHTML;
-		document.getElementsByName('prenom').value = ligne.cells[1].innerHTML;
-		document.getElementsByName('localite').value = ligne.cells[3].innerHTML;
-	}
