@@ -53,6 +53,7 @@ function remplirOptionPays($tab, $nbLignes, $ancienPays)
     }
 }
 
+<<<<<<< HEAD
 function remplirOption($tab, $nbLignes)
 {
     for ($i=0; $i<$nbLignes; $i++) {
@@ -61,6 +62,9 @@ function remplirOption($tab, $nbLignes)
 }
 
 function ListePays($ancienPays="FRANCE")
+=======
+function ListePays()
+>>>>>>> 42d9a18a3c35cda67c852ee7b815d4e48f2bd265
 {
     //$login = 'ETU2_53';
     //$mdp = 'ETU2_53';

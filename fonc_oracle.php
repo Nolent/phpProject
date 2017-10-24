@@ -139,7 +139,8 @@ function AfficherDonneeModif($tab, $nbLignes)
                     echo "<td>$data[$i]</td>\n";
                 }
             }
-            echo "<td><input type=\"button\" value=\"Modifier\"/></td>";
+            $nbRow = $i + 1;
+            echo "<td><input type=\"button\" value=\"Modifier\"/ onclick=\"parseRow($nbRow)\"></td>";
             echo "</tr>\n";
         }
         echo "</tbody> </table>\n";
