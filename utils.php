@@ -51,13 +51,6 @@ function remplirOptionPays($tab, $nbLignes)
     }
 }
 
-function remplirOption($tab, $nbLignes)
-{
-    for ($i=0; $i<$nbLignes; $i++) {
-        echo '<option value='.$tab[$i]['cl_numero'].'>'.$tab[$i]['cl_nom'].' '.$tab[$i]['cl_prenom'].'</option>';
-    }
-}
-
 function ListePays()
 {
     //$login = 'ETU2_53';
