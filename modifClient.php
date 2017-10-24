@@ -11,17 +11,17 @@ $erreur = true;
 if (!empty($_POST )) {
 //if ( isset ($_POST["nom"]) && isset($_POST["prenom"]) )
     $erreur = false;
-    if (!empty($_POST['nom'])) {
+    if (!empty($_POST['nom']) && $_POST['nom'] != "nom ?") {
         $nom = $_POST['nom'];
     } else {
         $erreur = true;
     }
-    if (!empty($_POST['prenom'])) {
+    if (!empty($_POST['prenom']) && $_POST['prenom'] != "prenom") {
         $prenom = $_POST['prenom'] ;
     } else {
         $erreur = true;
     }
-    if (!empty($_POST['localite'])) {
+    if (!empty($_POST['localite']) && $_POST['localite'] != "ville") {
         $localite = $_POST['localite'] ;
     } else {
         $erreur = true;
@@ -43,49 +43,28 @@ if (!empty($_POST )) {
     } else {
         $erreur = true;
     }
-    if (!empty($_POST['nomBase'])) {
-        $prenom = $_POST['nomBase'] ;
-    } else {
-        $erreur = true;
-    }
-    if (!empty($_POST['prenomBase'])) {
-        $prenom = $_POST['prenomBase'] ;
-    } else {
-        $erreur = true;
-    }
-    if (!empty($_POST['localiteBase'])) {
-        $prenom = $_POST['localiteBase'] ;
-    } else {
-        $erreur = true;
-    }
+
     if ($erreur == false) {
         include ('verifNom.php');
-
         $nom = verifAndConvert($nom);
         $prenom = verifAndConvert($prenom, true);
         $localite = verifAndConvertVille($localite);
-        $nomBase = verifAndConvert($nomBase);
-        $prenomBase = verifAndConvert($prenomBase, true);
-        $localiteBase = verifAndConvertVille($localiteBase);
+
 
         if ($nom != 1 && $prenom != 1 && $localite != 1 && verifChiffre($ca) == 0) {
-            if ($nomBase != 1 && $prenomBase != 1 && $localiteBase != 1) {
-                $req = "select cl_numero from cdi_client where cl_nom = '$nom' and cl_prenom='$prenom' and cl_localite = '$localite'";
-                $cur = PreparerRequete($conn, $req);
-                ExecuterRequete($cur);
-                $nbLignes;
-                $tab;
-                $nbLignes = LireDonnees2($cur, $tab);
-                if ($nbLignes == 0) {
-                    updateClient($nom, $prenom, $pays, $localite, $type, $ca, $nomBase, $prenomBase, $localiteBase);
-                    include ("modifClient.htm");
-                    echo '<script>alert("Modification réussie")</script>';
-                } else {
-                    include ("modifClient.htm");
-                    echo '<script>alert("Client déjà présent")</script>';
-                }
+            $req = "select cl_numero from cdi_client where cl_nom = '$nom' and cl_prenom='$prenom' and cl_localite = '$localite'";
+            $cur = PreparerRequete($conn, $req);
+            ExecuterRequete($cur);
+            $nbLignes;
+            $tab;
+            $nbLignes = LireDonnees2($cur, $tab);
+            if ($nbLignes == 0) {
+                updateClient($nom, $prenom, $pays, $localite, $type, $ca);
+                include ("modifClient.htm");
+                echo '<script>alert("Modification réussie")</script>';
             } else {
-                $erreur = true;
+                include ("modifClient.htm");
+                echo '<script>alert("Client déjà présent")</script>';
             }
         } else {
             $erreur = true;

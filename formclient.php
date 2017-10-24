@@ -60,7 +60,7 @@ if (!empty($_POST )) {
             if ($nbLignes == 0) {
                 ajoutClient($nom, $prenom, $pays, $localite, $type, $ca);
                 include ("formclient.htm");
-                echo '<script>alert(Entrée dans la base réussie)</script>';
+                echo '<script>alert("Entrée dans la base réussie")</script>';
             } else {
                 include ("formclient.htm");
                 echo '<script>alert("Client déjà présent")</script>';

@@ -37,10 +37,11 @@
 	}
 
 	function autreQuePart(){
-		var field = document.getElementsByName("CA");
-		var ca = field[0];
-		ca.disabled = false;
+		var field = document.monFormulaire.type.value;
+		if(field=="Particulier")document.monFormulaire.CA.disabled=true;
+		else document.monFormulaire.CA.disabled=false;
 	}
+	window.addEventListener("load",autreQuePart);
 
 	function parseRow(row) {
 		console.log("debut parse");
