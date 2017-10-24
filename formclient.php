@@ -67,9 +67,9 @@ if (!empty($_POST )) {
             }
         } else {
             $erreur = true;
-            if ($tab['nom'] == 1) {
+            if ($nom == 1) {
                 echo '<script>alert("Charactere interdit dans nom")</script>';
-            } elseif ($tab['prenom'] == 1) {
+            } elseif ($prenom == 1) {
                 echo '<script>alert("Charactere interdit dans prenom")</script>';
             } elseif ($localite == 1) {
                 echo '<script>alert("Charactere interdit dans ville")</script>';
