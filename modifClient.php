@@ -46,7 +46,6 @@ if (!empty($_POST )) {
 
     if ($erreur == false) {
         include ('verifNom.php');
-        $tab = verifAndConvertAll($nom, $prenom, $localite);
 
         $nom = verifAndConvert($nom);
         $prenom = verifAndConvert($prenom, true);
