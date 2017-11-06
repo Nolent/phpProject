@@ -86,14 +86,16 @@
       <script>
         function searchString() {
           var Sstring = $('#string').val();
+          $("tr:not(:contains('" + Sstring + "'))").css('visibility','collapse');
           $("tr:contains('" + Sstring + "')").css("background", "lightgrey");
-          var n = $("td:contains('" + Sstring + "')").length;
+          $("tr:contains('" + Sstring + "')").css("visibility", "visible");
           $("tr:contains('" + Sstring + "')")[0].scrollIntoView(true);
         }
         function clearSearch() {
           var Sstring = $('#string').val();
           if (Sstring != '') {
             $("tr").css("background", "none");
+            $("tr").css("visibility", "visible");
             $('#string').val('');
           }
         }
