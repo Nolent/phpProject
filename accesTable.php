@@ -60,3 +60,15 @@ function updateClient($nom, $prenom, $pays, $localite, $type, $ca, $nomBase, $pr
       return 1;
     }
 }
+
+function supprClient($nom, $prenom, $localite){
+  global $conn;
+  $req = "delete from cdi_client where cl_nom = '$nom' and cl_prenom = '$prenom' and cl_localite = '$localite' ";
+  $cur = PreparerRequete($conn, $req);
+  ExecuterRequete($cur);
+  $tab;
+  $req = "commit";
+  $cur = PreparerRequete($conn, $req);
+  ExecuterRequete($cur);
+
+}
