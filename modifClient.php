@@ -52,30 +52,56 @@ if (!empty($_POST )) {
     $localiteBase = $_POST['localiteBase'];
     echo $nomBase.$prenomBase.$localiteBase;
 
-    if ($erreur == false) {
+    if (isset($_POST['EN'])){
+      if ($erreur == false) {
         include ('verifNom.php');
         $nom = verifAndConvert($nom);
         $prenom = verifAndConvert($prenom, true);
         $localite = verifAndConvertVille($localite);
 
         if ($nom != 1 && $prenom != 1 && $localite != 1 && verifChiffre($ca) == 0) {
-                  if(updateClient($nom, $prenom, $pays, $localite, $type, $ca, $nomBase, $prenomBase, $localiteBase) == 0){
-                    echo '<script>alert("Client deja present")</script>';
-                  }else echo '<script>alert("Modification reussie")</script>';
-                  include ("modifClient.htm");
+          if(updateClient($nom, $prenom, $pays, $localite, $type, $ca, $nomBase, $prenomBase, $localiteBase) == 0){
+            echo '<script>alert("Client deja present")</script>';
+          }else echo '<script>alert("Modification reussie")</script>';
+          include ("modifClient.htm");
         } else {
-            $erreur = true;
-            if ($nom == 1) {
-                echo '<script>alert("Charactere interdit dans nom")</script>';
-            } elseif ($prenom == 1) {
-                echo '<script>alert("Charactere interdit dans prenom")</script>';
-            } elseif ($localite == 1) {
-                echo '<script>alert("Charactere interdit dans ville")</script>';
-            } else {
-                echo '<script>alert("Il ne peut y avoir que des nombres dans CA")</script>';
-            }
+          $erreur = true;
+          if ($nom == 1) {
+            echo '<script>alert("Charactere interdit dans nom")</script>';
+          } elseif ($prenom == 1) {
+            echo '<script>alert("Charactere interdit dans prenom")</script>';
+          } elseif ($localite == 1) {
+            echo '<script>alert("Charactere interdit dans ville")</script>';
+          } else {
+            echo '<script>alert("Il ne peut y avoir que des nombres dans CA")</script>';
+          }
         }
+      }
+    } else if(isset($_POST['SU'])){
+      if ($erreur == false) {
+        include ('verifNom.php');
+        $nomBase = verifAndConvert($nomBase);
+        $prenomBase = verifAndConvert($prenomBase, true);
+        $localiteBase = verifAndConvertVille($localiteBase);
+
+        if ($nomBase != 1 && $prenomBase != 1 && $localiteBase != 1){
+          supprClient($nomBase, $prenomBase, $localiteBase);
+          include ("modifClient.htm");
+        } else {
+          $erreur = true;
+          if ($nom == 1) {
+            echo '<script>alert("Charactere interdit dans nom")</script>';
+          } elseif ($prenom == 1) {
+            echo '<script>alert("Charactere interdit dans prenom")</script>';
+          } elseif ($localite == 1) {
+            echo '<script>alert("Charactere interdit dans ville")</script>';
+          } else {
+            echo '<script>alert("Il ne peut y avoir que des nombres dans CA")</script>';
+          }
+        }
+      }
     }
+
 }
 if ($erreur == true) {
     include ("modifClient.htm");

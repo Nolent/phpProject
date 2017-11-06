@@ -70,5 +70,4 @@ function supprClient($nom, $prenom, $localite){
   $req = "commit";
   $cur = PreparerRequete($conn, $req);
   ExecuterRequete($cur);
-
 }

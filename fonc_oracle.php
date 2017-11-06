@@ -129,19 +129,27 @@ function AfficherDonneeModif($tab, $nbLignes)
                 echo "<th>$key</th>\n";
             }
         }
-        echo "<th>Modifier</th>";
+        echo "<th>Edition</th>";
         echo "</tr> </thead> \n";
         echo '<tbody>';
         for ($i = 0; $i < $nbLignes; $i++) { // balayage de toutes les lignes
             echo "<tr>\n";
+            $funSupprClient = "<?php supprClient(";
             foreach ($tab as $key => $data) { // lecture des enregistrements de chaque colonne
                 if ($key != 'CL_NUMERO') {
                     echo "<td>$data[$i]</td>\n";
+                    if ($key == 'CL_NOM' || $key == 'CL_PRENOM' || $key == 'CL_LOCALITE') {
+                      if ($key != 'CL_LOCALITE') {
+                        $funSupprClient = $funSupprClient."\"".$data[$i]."\",";
+                      } else {
+                        $funSupprClient = $funSupprClient."\"".$data[$i]."\"";
+                      }
+                    }
                 }
             }
+            $funSupprClient = $funSupprClient.')?>';
             $nbRow = $i + 1;
-            echo "<td><input type=\"button\" value=\"Modifier\"/ onclick=\"parseRow($nbRow)\"></td>";
-            echo "</tr>\n";
+            echo '<td><input type="button" value="Editer" onclick="parseRow('.$nbRow.')"></input></td></tr>';
         }
         echo "</tbody> </table>\n";
     } else {
