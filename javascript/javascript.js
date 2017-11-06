@@ -53,8 +53,11 @@
 				selPays[0][i].selected = true;
 			}
 		}
+		var typeClient = ligne.cells[5].innerHTML;
+		console.log("type client = " + typeClient);
 		for (var i = 0; i < selType[0].length; i++) {
-			if (selType[0][i].value == ligne.cells[5].innerHTML) {
+			console.log("type sel = " + selType[0][i].value);
+			if (selType[0][i].value == typeClient) {
 				selType[0][i].selected = true;
 			}
 		}
