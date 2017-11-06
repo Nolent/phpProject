@@ -83,10 +83,11 @@
     <form onsubmit="return false">
       <input id="string" name="string" type="text" value="" onclick = "clearSearch()" onfocus="clearSearch()" onsubmit="searchString()"/>
       <input type="submit" value="Rechercher" onclick="searchString()" />
+      <input type="submit"  value="Reset" onclick="clearSearch()">
       <script>
         function searchString() {
           var Sstring = $('#string').val();
-          $("tr:not(:contains('" + Sstring + "'))").css('visibility','collapse');
+          $("tr").css('visibility','collapse');
           $("tr:contains('" + Sstring + "')").css("background", "lightgrey");
           $("tr:contains('" + Sstring + "')").css("visibility", "visible");
           $("tr:contains('" + Sstring + "')")[0].scrollIntoView(true);
