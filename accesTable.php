@@ -38,10 +38,25 @@ function updateClient($nom, $prenom, $pays, $localite, $type, $ca, $nomBase, $pr
 {
     global $conn;
     //select * from cdi_client;insert into cdi_client(cl_numero,cl_nom,cl_prenom,cl_pays,cl_localite,cm_ca,cl_type) values (select concat("C",count(*)) as nbClient from cdi_client,"MICHEL","michel","F","PARIS",null,"Particulier");
+    if (isset($ca)) {
     $req = "update CDI_CLIENT set cl_nom = '$nom', cl_prenom = '$prenom', cl_pays = '$pays', cl_localite = '$localite', cl_type = '$type', cl_ca = $ca where cl_numero = (select cl_numero from cdi_client where cl_nom = '$nomBase' and cl_prenom = '$prenomBase' and cl_localite='$localiteBase')";
+  }
+  else{
+    $req = "update CDI_CLIENT set cl_nom = '$nom', cl_prenom = '$prenom', cl_pays = '$pays', cl_localite = '$localite', cl_type = '$type', cl_ca = null where cl_numero = (select cl_numero from cdi_client where cl_nom = '$nomBase' and cl_prenom = '$prenomBase' and cl_localite='$localiteBase')";
+  }
     $cur = PreparerRequete($conn, $req);
     ExecuterRequete($cur);
-    $req = "commit";
+    $req = "select * from cdi_client where cl_prenom = '$prenom' and cl_nom = '$nom' and cl_localite = '$localite'";
     $cur = PreparerRequete($conn, $req);
     ExecuterRequete($cur);
+    $tab;
+    $nbLigne = LireDonnees2($cur, $tab);
+    if ($nbLigne > 1) {
+      return 0;
+    }else {
+      $req = "commit";
+      $cur = PreparerRequete($conn, $req);
+      ExecuterRequete($cur);
+      return 1;
+    }
 }
