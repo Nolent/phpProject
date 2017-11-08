@@ -89,14 +89,26 @@ function convertAccent($nom)
     return $url;
 }
 
+function convertAccentMaj($nom)
+{
+    $url = $nom;
+    $url = preg_replace('#È|É|Ê|Ë#', 'E', $url);
+    $url = preg_replace('#À|Á|Â|Ã|Ä|Å#', 'A', $url);
+    $url = preg_replace('#Ì|Í|Î|Ï#', 'I', $url);
+    $url = preg_replace('#Ò|Ó|Ô|Õ|Ö#', 'O', $url);
+    $url = preg_replace('#Ù|Ú|Û|Ü#', 'U', $url);
+    $url = preg_replace('#Ý#', 'Y', $url);
+    return $url;
+}
+
 function majuscule($nom)
 {
     $nom = explode('-', $nom);
-
     for ($i=0; $i < count($nom); $i++) {
         $nom[$i] = convertAccent(mb_substr($nom[$i], 0, 1)).mb_substr($nom[$i], 1, null);
         $nom[$i] = strtoupper(mb_substr($nom[$i], 0, 1)).mb_substr($nom[$i], 1, null);
     }
+
     $nom = implode('-', $nom);
 
     return $nom;
@@ -108,6 +120,7 @@ function verifAndConvert($nom, $type = false) //true = prenom, false == nom de f
         if (verifAllPrenom($nom)==0 && count($nom) < 25) {
             $nom = strtolower($nom);
             $nom = majuscule($nom);
+            $nom = convertAccentMaj($nom);
             $nom = ajoutApostrophe($nom);
             return $nom;
         }
