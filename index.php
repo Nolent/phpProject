@@ -22,7 +22,7 @@
 				<ul class="nav navbar-nav">
           <li class="active"><a href="index.php">Accueil</a></li>
           <li><a href="formclient.php">Nouveau Client</a></li>
-          <li><a href="modifClient.php">Modification Client</a></li>
+          <li><a href="modifClient.php">Edition Client</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,7 +33,8 @@
 		<div class="page-header">
 			<h1>Gestion de clients</h1>
 		</div>
-			<a href="./formclient.php"><button type="button" class="btn">Ajouter un client</button></a>
+			<a href="./formclient.php"><button type="button" class="btn">Ajouter un client</button></a><br><br>
+			<a href="./modifClient.php"><button type="button" class="btn">Editer un client</button>
 	</div>
 </body>
 </html>
