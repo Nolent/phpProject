@@ -90,25 +90,25 @@ function remplirType(){
 		switch ($_POST['type']) {
 			case 'PME':
 			echo '<option value="PME" selected> PME </option>';
-			echo '<option value="GrandCompte" > Grand compte </option>';
+			echo '<option value="Grand compte" > Grand compte </option>';
 			echo '<option value="Administration" > Administration </option>';
 			echo '<option value="Particulier" > Particulier </option>';
 			break;
 			case 'GrandCompte':
 			echo '<option value="PME"  > PME </option>';
-			echo '<option value="GrandCompte"  selected> Grand compte </option>';
+			echo '<option value="Grand compte"  selected> Grand compte </option>';
 			echo '<option value="Administration" > Administration </option>';
 			echo '<option value="Particulier"> Particulier </option>';
 			break;
 			case 'Particulier':
 			echo '<option value="PME" > PME </option>';
-			echo '<option value="GrandCompte" > Grand compte </option>';
+			echo '<option value="Grand compte" > Grand compte </option>';
 			echo '<option value="Administration"  > Administration </option>';
 			echo '<option value="Particulier" selected> Particulier </option>';
 			break;
 			case 'Administration':
-			echo '<option value="PME"  > PME </option>';
-			echo '<option value="GrandCompte" > Grand compte </option>';
+			echo '<option value="PME"> PME </option>';
+			echo '<option value="Grand compte" > Grand compte </option>';
 			echo '<option value="Administration" setected> Administration </option>';
 			echo '<option value="Particulier" > Particulier </option>';
 			break;
@@ -116,7 +116,7 @@ function remplirType(){
 	}
 	else{
 		echo '<option value="PME"  selected> PME </option>';
-		echo '<option value="GrandCompte" > Grand compte </option>';
+		echo '<option value="Grand compte" > Grand compte </option>';
 		echo '<option value="Administration" > Administration </option>';
 		echo '<option value="Particulier" selected> Particulier </option>';
 	}
