@@ -45,7 +45,12 @@ function verifEspace($nom)
 
 function verifLettres($nom)
 {
-    $motif = '/[^a-zA-Z\- \'áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]/';
+    if (strlen($nom) == 1) {
+        $motif = '/[^a-zA-Z\- áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]/';
+    } else {
+        $motif = '/[^a-zA-Z\- \'áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]/';
+    }
+
     //motif modifié a partir de https://www.developpez.net/forums/d1270761/webmasters-developpement-web/javascript-ajax-typescript-dart/javascript/regex-accents-espaces-caracteres-separation/
     return preg_match($motif, $nom);
 }
